@@ -9,16 +9,16 @@ public class Team19Controller {
 
 	@GetMapping("/team19")
 	public String  index() {
-		return "Team19Top";
+		return "team19/Team19Top";
 	}
 	
 	@PostMapping("/team19")
 	public String send1() {
-		return "Team19Main";
+		return "team19/Team19Main";
 	}
 	@PostMapping("/team19")
 	public String send2() {
-		return "Team19Sub";
+		return "team19/Team19Sub";
 	}
 	
 }
