@@ -16,6 +16,11 @@ public class Team19Controller {
 	public String send1() {
 		return "team19/Team19Main";
 	}
+	
+	@PostMapping(value="/team19_1",params="register")
+	public String send4() {
+		return "team19/Team19Register";
+	}
 	@PostMapping("/team19_2")
 	public String send2() {
 		return "team19/Team19Sub";
@@ -34,7 +39,7 @@ public class Team19Controller {
 	public String sendback3() {
 		return "team19/Team19Main";
 	}
-	
+
 	
 }
 	
