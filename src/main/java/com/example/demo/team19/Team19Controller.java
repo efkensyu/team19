@@ -20,10 +20,19 @@ public class Team19Controller {
 	public String send2() {
 		return "team19/Team19Sub";
 	}
+	@PostMapping(value="/team19_2", params="back")
+	public String sendback2() {
+		return "team19/Team19Top";
+	}
 	
 	@PostMapping("/team19_3")
 	public String send3() {
 		return "team19/Team19Result";
+	}
+	
+	@PostMapping(value="/team19_3", params="back")
+	public String sendback3() {
+		return "team19/Team19Main";
 	}
 	
 }
