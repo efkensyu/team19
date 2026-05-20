@@ -21,5 +21,10 @@ public class Team19Controller {
 		return "team19/Team19Sub";
 	}
 	
+	@PostMapping("/team19_3")
+	public String send3() {
+		return "team19/Team19Result";
+	}
+	
 }
 	
