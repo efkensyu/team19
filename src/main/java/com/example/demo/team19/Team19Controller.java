@@ -12,11 +12,11 @@ public class Team19Controller {
 		return "team19/Team19Top";
 	}
 	
-	@PostMapping("/team19")
+	@PostMapping("/team19_1")
 	public String send1() {
 		return "team19/Team19Main";
 	}
-	@PostMapping("/team19")
+	@PostMapping("/team19_2")
 	public String send2() {
 		return "team19/Team19Sub";
 	}
