@@ -1,6 +1,7 @@
 package com.example.demo.team19;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -24,7 +25,11 @@ public class Team19Controller {
 	
 	//ようこそボタン
 	@PostMapping("/team19_1")
-	public String send1(@ModelAttribute @Validated Team19Form team19Form ) {
+	public String send1(@ModelAttribute @Validated Team19Form team19Form,
+			BindingResult result) {
+		if(result.hasErrors()) {
+			return "team19/error";
+		}
 		return "team19/Team19Mood_Janru";
 	}
 	
