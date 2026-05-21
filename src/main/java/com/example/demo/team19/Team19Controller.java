@@ -15,7 +15,7 @@ public class Team19Controller {
 	//ようこそボタン
 	@PostMapping("/team19_1")
 	public String send1() {
-		return "team19/Team19Mood";
+		return "team19/Team19Mood_Janru";
 	}
 	
 	//登録ボタン
@@ -24,29 +24,35 @@ public class Team19Controller {
 		return "team19/Team19Register";
 	}
 	
-	//気分選択
+	//気分・ジャンル選択
 	@PostMapping("/team19_2")
 	public String send2() {
-		return "team19/Team19Janru";
+		return "team19/Team19Mood_Janru";
 	}
 	
-	//気分選択画面からホームへ戻るボタン
+	//気分・ジャンル選択画面からホームへ戻るボタン
 	@PostMapping(value="/team19_2", params="back")
-	public String sendback2() {
+	public String sendback1() {
 		return "team19/Team19Home";
 	}
 	
-	//ジャンル選択
-	@PostMapping("/team19_3")
-	public String send3() {
+	//気分・ジャンル選択画面から結果表示に行くボタン
+	@PostMapping(value="/team19_2", params="forward")
+	public String sendforward2() {
 		return "team19/Team19Result";
 	}
 	
-	//ジャンル選択画面から気分画面へ戻るボタン
+	//結果表示から、気分・ジャンル選択画面に戻るボタン
 	@PostMapping(value="/team19_3", params="back")
-	public String sendback3() {
-		return "team19/Team19Mood";
+	public String sendback2() {
+		return "team19/Team19Mood_Janru";
 	}
+	
+	//結果表示から、登録画面に行くボタン
+		@PostMapping(value="/team19_3", params="register")
+		public String sendregister() {
+			return "team19/Team19Register";
+		}
 	
 	//曲追加ボタン
 	@PostMapping(value="/team19_4", params="add")

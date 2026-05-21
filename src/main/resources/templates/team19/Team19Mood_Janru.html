@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.ofg">
+<head>
+<meta charset="UTF-8">
+<title>メイン画面</title>
+</head>
+<body>
+	<form method="post" th:action="@{team19_2}">
+	<h2>気分を選択してください</h2>
+	<input type="radio" value="楽しい">JOY -楽しい-
+	<input type="radio" value="落ち込んでいる">SAD -落ち込んでいる-
+	<br>
+	<input type="radio" value="盛り上がる">EXCITING -盛り上がる-
+	<input type="radio" value="リラックス">RELAX -リラックス-
+	<br>
+	<h2>ジャンルを選択してください</h2>
+	<input type="radio" value="J-POP">J-POP -邦楽-
+	<input type="radio" value="インスト">Instrumental -インスト-
+	<br>
+	<input type="radio" value="アニソン・ボカロ">Anime・VocaloidSong -アニソン・ボーカロイド-
+	<input type="radio" value="洋楽">Forigen Music -洋楽-
+	<input type="radio" value="その他">Other -その他のジャンル-
+	<br>
+	<input type="submit" value="戻る" name="back">
+	<input type="submit" value="結果表示" name="forward">
+	
+	
+	
+	</form>
+</body>
+</html>
