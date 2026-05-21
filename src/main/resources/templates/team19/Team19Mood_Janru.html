@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <title>メイン画面</title>
-<link rel="stylesheet" type="text/css" href="Team19.css")>
+<link rel="stylesheet" type="text/css" href="Team19.css">
 </head>
 <body>
 	<form method="post" th:action="@{team19_2}">
@@ -21,6 +21,8 @@
 	<input type="radio" value="アニソン・ボカロ">Anime・VocaloidSong -アニソン・ボーカロイド-
 	<input type="radio" value="洋楽">Forigen Music -洋楽-
 	<input type="radio" value="その他">Other -その他のジャンル-
+	<br>
+	<input type="submit" value="選択をリセット" name="reset">
 	<br>
 	<input type="submit" value="戻る" name="back">
 	<input type="submit" value="結果表示" name="forward">

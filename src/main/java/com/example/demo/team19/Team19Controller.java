@@ -50,6 +50,12 @@ public class Team19Controller {
 		return "team19/Team19Home";
 	}
 	
+	//resetボタン
+	@PostMapping(value="/team19_2", params="reset")
+	public String reset() {
+		return "team19/Team19Mood_Janru";
+	}
+	
 	//気分・ジャンル選択画面から結果表示に行くボタン
 	@PostMapping(value="/team19_2", params="forward")
 	public String sendforward2(@ModelAttribute @Validated Team19Form team19Form) {
