@@ -1,7 +1,5 @@
 package com.example.demo.team19;
 
-import java.util.Arrays;
-
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.AfterReturning;
@@ -33,6 +31,6 @@ public class Team19Aspect {
 	
 	@AfterThrowing("execution(* com.example.demo.team19.Team19Controller.*(..))")
 	public void throwingLog(JoinPoint jp){	
-		log.error("エラー発生。引数=[{}]", Arrays.toString(jp.getArgs()));
+		log.error("エラー発生:" + jp.getSignature());
 		}
 }
