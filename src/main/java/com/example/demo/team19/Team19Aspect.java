@@ -1,6 +1,11 @@
 package com.example.demo.team19;
 
+import java.util.Arrays;
+
+import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.ProceedingJoinPoint;
+import org.aspectj.lang.annotation.AfterReturning;
+import org.aspectj.lang.annotation.AfterThrowing;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
 import org.springframework.stereotype.Component;
@@ -20,5 +25,14 @@ public class Team19Aspect {
 			}catch(Exception e) {
 				return "team19/error";
 			}
+		}
+	@AfterReturning("execution(* com.example.demo.team19.Team19Controller.*(..))")
+	public void afterReturningLog(JoinPoint jp){	
+		log.info("メソッド正常終了:" + jp.getSignature());
+		}
+	
+	@AfterThrowing("execution(* com.example.demo.team19.Team19Controller.*(..))")
+	public void throwingLog(JoinPoint jp){	
+		log.error("エラー発生。引数=[{}]", Arrays.toString(jp.getArgs()));
 		}
 }

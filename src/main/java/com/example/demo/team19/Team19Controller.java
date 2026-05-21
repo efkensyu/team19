@@ -26,7 +26,9 @@ public class Team19Controller {
 	//ようこそボタン
 	@PostMapping("/team19_1")
 	public String send1(@ModelAttribute @Validated Team19Form team19Form,BindingResult result) {
-		
+		if(result.hasErrors()) {
+			return "team19/error";
+		}
 		return "team19/Team19Mood_Janru";
 	}
 	
