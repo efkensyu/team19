@@ -57,20 +57,16 @@ public class Team19Controller {
 	//曲登録確定ボタン
 	@PostMapping(value="/team19_4", params="register")
 	public String send5() {
-		return "team19/Team19RegisterResult";
+		return "team19/Team19Register";
 	}
 	
-	//登録画面からホーム画面へ戻るボタン
+	
+	//曲登録画面からホーム画面へ戻るボタン
 	@PostMapping(value="/team19_4", params="back")
 	public String sendback5() {
 		return "team19/Team19Home";
 	}
 	
-	//登録結果画面から登録画面へ戻るボタン
-	@PostMapping(value="/team19_5", params="back")
-	public String sendback6() {
-		return "team19/Team19Register";
-	}
 	
 }
 	
