@@ -6,12 +6,12 @@
 <link rel="stylesheet" type="text/css" href="Team19Home.css")>
 </head>
 <body>
-<h1>ようこそ</h1>
-<p>名前を入力してください</p>
+<h1>あなたの今の気分から、至高の曲をお届けします。</h1>
+<p>名前を入力し、気分・ジャンル選択画面に移行してください</p>
+<p>自分のお気に入りの曲を、他の人にシェアも出来ます。</p>
 <form method="post" th:action="@{team19_1}" th:object="${team19Form}">
-	<input type="text" name="namebox" size="20">
+	<input type="text" th:field="*{name}" size="20">
 	<input type="submit" value="確定">
-	<br>
 	<input type="submit" name="register" value="曲登録ページ">
 </form>
 </body>
