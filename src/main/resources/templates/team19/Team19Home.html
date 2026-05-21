@@ -2,13 +2,18 @@
 <html xmlns:th="http://www.thymeleaf.ofg">
 <head>
 <meta charset="UTF-8">
-<title>トップ画面</title>
+<title>ホーム画面</title>
+<link rel="stylesheet" type="text/css" href="Team19Home.css")>
 </head>
 <body>
 <h1>ようこそ</h1>
-<form method="post" th:action="@{team19_1}">
-	<input type="submit" value="ようこそ">
-	<input type="submit" name="register" value="登録">
+<p>名前を入力してください</p>
+<form method="post" th:action="@{team19_1}" th:object="${team19Form}">
+	<input type="text" name="namebox" size="20">
+	<input type="submit" value="確定">
+	<br>
+	<input type="submit" name="register" value="曲登録ページ">
 </form>
 </body>
 </html>
+
