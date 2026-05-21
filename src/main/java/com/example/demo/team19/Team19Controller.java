@@ -25,11 +25,8 @@ public class Team19Controller {
 	
 	//ようこそボタン
 	@PostMapping("/team19_1")
-	public String send1(@ModelAttribute @Validated Team19Form team19Form,
-			BindingResult result) {
-		if(result.hasErrors()) {
-			return "team19/error";
-		}
+	public String send1(@ModelAttribute @Validated Team19Form team19Form,BindingResult result) {
+		
 		return "team19/Team19Mood_Janru";
 	}
 	
@@ -53,13 +50,13 @@ public class Team19Controller {
 	
 	//気分・ジャンル選択画面から結果表示に行くボタン
 	@PostMapping(value="/team19_2", params="forward")
-	public String sendforward2() {
+	public String sendforward2(@ModelAttribute @Validated Team19Form team19Form) {
 		return "team19/Team19Result";
 	}
 	
 	//結果表示から、気分・ジャンル選択画面に戻るボタン
 	@PostMapping(value="/team19_3", params="back")
-	public String sendback2(@ModelAttribute @Validated Team19Form team19Form) {
+	public String sendback2() {
 		return "team19/Team19Mood_Janru";
 	}
 	
