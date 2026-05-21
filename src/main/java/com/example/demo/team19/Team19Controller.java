@@ -1,11 +1,21 @@
 package com.example.demo.team19;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.SessionAttributes;
 
 @Controller
+@SessionAttributes(types=Team19Form.class)
 public class Team19Controller {
+	//名前セッション定義
+	@ModelAttribute("team19Form")
+	public Team19Form setup() {
+		return new Team19Form();
+	}
+	
 	//最初にアクセスした時
 	@GetMapping("/team19")
 	public String  index() {
@@ -14,7 +24,7 @@ public class Team19Controller {
 	
 	//ようこそボタン
 	@PostMapping("/team19_1")
-	public String send1() {
+	public String send1(@ModelAttribute @Validated Team19Form team19Form ) {
 		return "team19/Team19Mood_Janru";
 	}
 	
@@ -44,7 +54,7 @@ public class Team19Controller {
 	
 	//結果表示から、気分・ジャンル選択画面に戻るボタン
 	@PostMapping(value="/team19_3", params="back")
-	public String sendback2() {
+	public String sendback2(@ModelAttribute @Validated Team19Form team19Form) {
 		return "team19/Team19Mood_Janru";
 	}
 	
