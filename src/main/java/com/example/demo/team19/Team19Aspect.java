@@ -8,12 +8,15 @@ import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
 import org.springframework.stereotype.Component;
 
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
 @Aspect
 @Component
+@RequiredArgsConstructor
 public class Team19Aspect {
+	
 	@Around("execution(* com.example.demo.team19.Team19Controller.*(..))")
 	public Object aroundLog(ProceedingJoinPoint jp) throws Throwable{	
 		try {

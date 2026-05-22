@@ -1,5 +1,55 @@
-INSERT INTO bumon_tbl VALUES('B01', '開発部');
-INSERT INTO bumon_tbl VALUES('B02', '技術部');
-INSERT INTO bumon_tbl VALUES('B03', '管理部');
-INSERT INTO bumon_tbl VALUES('B04', '総務部');
-INSERT INTO bumon_tbl VALUES('B05', '営業部');
+--INSERT INTO bumon_tbl VALUES('B01', '開発部');
+--INSERT INTO bumon_tbl VALUES('B02', '技術部');
+--INSERT INTO bumon_tbl VALUES('B03', '管理部');
+--INSERT INTO bumon_tbl VALUES('B04', '総務部');
+--INSERT INTO bumon_tbl VALUES('B05', '営業部');
+--
+--INSERT INTO team19_music_tbl VALUES
+--('01', '前前前世', 'RADWIMPS', 'A', 'https://open.spotify.com/intl-ja/track/3OWQGA40CgyZ7AHhVTOe34?si=2196fda877de4e3e',1),
+--('02', '天体観測', 'BUMP OF CHIKIEN', 'A', 'https://open.spotify.com/intl-ja/track/3hRRYgBeunE3PTmnzATTS0?si=9459df62a147452f',1),
+--('03', '青と夏', 'Mrs.GREENAPPLE', 'A', 'https://open.spotify.com/intl-ja/track/0a3587n25Xhw098UeEbeJq?si=9b436466bbc343cd',1),
+--('04', 'ドライフラワー', '優里', 'A', 'https://open.spotify.com/intl-ja/track/7dH0dpi751EoguDDg3xx6J?si=7cf0e69dc1c048b2',2),
+--('05', 'Pretender', 'official髭男dism', 'A', 'https://open.spotify.com/intl-ja/track/5LkWXxDxUTwEVHL0pfKL55?si=903091c1aeb64f23',2),
+--('06', 'ヒロイン', 'back number', 'A', 'https://open.spotify.com/intl-ja/track/3hBAYbAECEix9raaTq8S3H?si=a88d2f5b4a1847a3',2),
+--('07', '新宝島', 'サカナクション', 'A', 'https://open.spotify.com/intl-ja/track/6ODZT1FGTE2q4two05giS1?si=ead1351dd2b447ba', 3),
+--('08', '唱', 'Ado', 'A', 'https://open.spotify.com/intl-ja/track/5yYsdZus3N5OH5w3gdTlJS?si=92a8a4a34fd7403f', 3),
+--('09', '睡蓮花', '湘南乃風', 'A', 'https://open.spotify.com/intl-ja/track/7CgxrGWsDarS8ZvGAQG0jE?si=be4d1768a8364b2d', 3),
+--('10', 'チェリー', 'スピッツ', 'A', 'https://open.spotify.com/intl-ja/track/1ihCiJaXRl4f6Sy4LJov5z?si=9e3bfb81f2a94fc2', 4),
+--('11', 'ひまわりの約束', '秦基博', 'A', 'https://open.spotify.com/intl-ja/track/45jGOHwYKgsRYbAJ8DR61d?si=e18fba590a344b2d', 4),
+--('12', '家族になろうよ', '福山雅治', 'A', 'https://open.spotify.com/intl-ja/track/64awLoKSPoQ5M6YulMsyCe?si=6cbc0c0f8be54563', 4),
+--('13', 'Canned Heat', 'Jamiroqai', 'B', 'https://open.spotify.com/intl-ja/track/47oS7xB31QQUyPCgHpM3VZ?si=104424347e2541bb', 1),
+--('14', 'Happy', 'C2C', 'B', 'https://open.spotify.com/intl-ja/track/2ZXWOCdQ2IJ63RBOjuQVR3?si=351dbe4bb96d46e8', 1),
+--('15', 'Spanish Flea', 'Herb Alpert', 'B', 'https://open.spotify.com/intl-ja/track/689DTIE4YIRfuIUG58Z2H2?si=2589b5a81b46469d', 1),
+--('16', 'River Flows in You', 'Yiruma', 'B', 'https://open.spotify.com/intl-ja/track/2agBDIr9MYDUducQPC1sFU?si=a0b74dc077c44d9f', 2),
+--('17', 'Canon in D', 'Johann Pachelbel', 'B', 'https://open.spotify.com/intl-ja/track/6aPhm7SyFrTTIiYEsTrtlh?si=0b723d3d1bb041a7', 2),
+--('18', 'Merry Christmas Mr. Lawrence', 'Ryuichi Sakamoto', 'B', 'https://open.spotify.com/intl-ja/track/6WY4wvlmgccWapnIg14Vy0?si=39fc393d1dc24f4f', 2),
+--('19', 'RYDEEN', 'Yellow Magic Orchestra', 'B', 'https://open.spotify.com/intl-ja/track/248FNZNsD2V9zuWKnp4YJD?si=f5248b05501c4b31', 3),
+--('20', 'Sandstorm', 'Darude', 'B', 'https://open.spotify.com/intl-ja/track/6Sy9BUbgFse0n0LPA5lwy5?si=196685eefd704331', 3),
+--('21', 'Time', 'Hans Zimmer', 'B', 'https://open.spotify.com/intl-ja/track/6ZFbXIJkuI1dVNWvzJzown?si=c46aef0b6da84f97', 3),
+--('22', 'Weightless', 'Marconi Union', 'B', 'https://open.spotify.com/intl-ja/track/6kkwzB6hXLIONkEk9JciA6?si=d36cde2182ca42bf', 4),
+--('23', 'One Summer’s Day', 'Joe Hisaishi', 'B', 'https://open.spotify.com/intl-ja/track/3Y4XAV574a6jlyylrP45JW?si=e514bd3e7b9f4220', 4),
+--('24', 'Clair de Lune', 'Claude Debussy', 'B', 'https://open.spotify.com/intl-ja/track/6Er8Fz6fuZNi5cvwQjv1ya?si=14326f641d124dab', 4),
+--('25', '恋愛サーキュレーション', '花澤香菜', 'C', 'https://open.spotify.com/intl-ja/track/3Ytb23uBzBZCfwzcSSqr0Z?si=c5a84e9595b74d86', 1),
+--('26', 'ハレ晴レユカイ', '平野綾・茅原実里・後藤邑子', 'C', 'https://open.spotify.com/intl-ja/track/7ugsistwEp0PhP4Ddj9cra?si=bdea06705c684c9f', 1),
+--('27', 'エイリアンエイリアン', 'ナユタン星人', 'C', 'https://open.spotify.com/intl-ja/track/4fDralhqIxfoDHrnFSE3n0?si=d6e931a0bd4347f0', 1),
+--('28', '君の知らない物語', 'supercell', 'C', 'https://open.spotify.com/intl-ja/track/2FXnjOr5iBbZLV0efg0Xgi?si=7f9e1b21e40d4a6f', 2),
+--('29', 'unravel', 'TK from 凛として時雨', 'C', 'https://open.spotify.com/intl-ja/track/1rN9QoVxw5U7TJkyaUR8C1?si=b96aee2bab824fb0', 2),
+--('30', 'secret base 〜君がくれたもの〜', 'ZONE', 'C', 'https://open.spotify.com/intl-ja/track/7ah8In0z478pctQnoFvW1L?si=6a9409e8449f4266', 2),
+--('31', '残酷な天使のテーゼ', '高橋洋子', 'C', 'https://open.spotify.com/intl-ja/track/23phSRwoMy48rwFpmuAP8q?si=4f24ca9d940c4540', 3),
+--('32', '千本桜', '黒うさP', 'C', 'https://open.spotify.com/intl-ja/track/38mUTswfszVFQ952r89AP8?si=576e14c6d14848be', 3),
+--('33', '脳漿炸裂ガール', 'れるりり', 'C', 'https://open.spotify.com/intl-ja/track/0ASw64KfzSUtChQDfzC906?si=2b9bfbbda812403d', 3),
+--('34', 'Again', 'YUI', 'C', 'https://open.spotify.com/intl-ja/track/4OQq1bcP12GQQXJNupxqfR?si=b288352c7aaa46c2', 4),
+--('35', 'なんでもないや', 'RADWIMPS', 'C', 'https://open.spotify.com/intl-ja/track/3SMpsXpVrFju2OUzFtJPws?si=397db963d0714728', 4),
+--('36', '打上花火', 'DAOKO × 米津玄師', 'C', 'https://open.spotify.com/intl-ja/track/7pcTLUekZJQnzDOUDuExVJ?si=8b13634e1e5c4b14', 4),
+--('37', 'Happy', 'Pharrell Williams', 'D', 'https://open.spotify.com/intl-ja/track/60nZcImufyMA1MKQY3dcCH?si=45759650e6f141ce', 1),
+--('38', 'Shake It Off', 'Taylor Swift', 'D', 'https://open.spotify.com/intl-ja/track/1CiVz2WkmZRwhU3A6J2Gjz?si=81570da2d89e4e24', 1),
+--('39', 'Can’t Stop the Feeling!', 'Justin Timberlake', 'D', 'https://open.spotify.com/intl-ja/track/6JV2JOEocMgcZxYSZelKcc?si=efc2edef7f4c4fc6', 1),
+--('40', 'Someone Like You', 'Adele', 'D', 'https://open.spotify.com/intl-ja/track/5lkpeJwmQKgY3bX2zChjxX?si=c0969731490a46bc', 2),
+--('41', 'Fix You', 'Coldplay', 'D', 'https://open.spotify.com/intl-ja/track/7LVHVU3tWfcxj5aiPFEW4Q?si=5288564b2f3c401a', 2),
+--('42', 'Stay With Me', 'Sam Smith', 'D', 'https://open.spotify.com/intl-ja/track/7876ppTxozBmoZ2EZZqV1i?si=7d2ff5312a774df7', 2),
+--('43', 'Animals', 'Martin Garrix', 'D', 'https://open.spotify.com/intl-ja/track/0A9mHc7oYUoCECqByV8cQR?si=8532a12d3b8b4929', 3),
+--('44', 'Wake Me Up', 'Avicii', 'D', 'https://open.spotify.com/intl-ja/track/0nrRP2bk19rLc0orkWPQk2?si=16000527734f4de9', 3),
+--('45', 'Party Rock Anthem', 'LMFAO', 'D', 'https://open.spotify.com/intl-ja/track/0jQISNPAYI5amka3mGcPJF?si=e2ff654666424707', 3),
+--('46', 'Sunset Lover', 'Petit Biscuit', 'D', 'https://open.spotify.com/intl-ja/track/0hNduWmlWmEmuwEFcYvRu1?si=55e0035ea06447a5', 4),
+--('47', 'Perfect', 'Ed Sheeran', 'D', 'https://open.spotify.com/intl-ja/track/0tgVpDi06FyKpA1z0VMD4v?si=a3d7ff2a04de4c32', 4),
+--('48', 'Memories', 'Maroon 5', 'D', 'https://open.spotify.com/intl-ja/track/4cktbXiXOapiLBMprHFErI?si=a5d78e4538d94f87', 4);
