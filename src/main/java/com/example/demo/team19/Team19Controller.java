@@ -23,6 +23,12 @@ public class Team19Controller {
 		public Team19CommentForm setupComment() {
 			return new Team19CommentForm();
 		}
+		
+	//registerform
+	@ModelAttribute("team19RegisterForm")
+		public Team19RegisterForm setupRegister() {
+		    return new Team19RegisterForm();
+		}	
 	
 	//最初にアクセスした時
 	@GetMapping("/team19")
@@ -88,10 +94,10 @@ public class Team19Controller {
 		public String sendregister() {
 			return "team19/Team19Register";
 		}
-	
+		
 	//曲追加ボタン
 	@PostMapping(value="/team19_4", params="add")
-	public String add(@ModelAttribute @Validated Team19RegisterForm team19registerForm,BindingResult result) {
+	public String add(@ModelAttribute @Validated Team19RegisterForm team19RegisterForm,BindingResult result) {
 		if(result.hasErrors()) {
 			return "team19/Team19Register";
 		}
@@ -100,7 +106,10 @@ public class Team19Controller {
 	
 	//曲登録確定ボタン
 	@PostMapping(value="/team19_4", params="register")
-	public String send5() {
+	public String send5(@ModelAttribute @Validated Team19RegisterForm team19RegisterForm,BindingResult result) {
+		if(result.hasErrors()) {
+			return "team19/Team19Register";
+		}
 		return "team19/Team19Register";
 	}
 	
