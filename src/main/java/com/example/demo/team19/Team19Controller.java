@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
 @Controller
-@SessionAttributes(types= {Team19Form.class, Team19CommentForm.class})
+@SessionAttributes(types= {Team19Form.class, Team19CommentForm.class,Team19RegisterForm.class})
 //@SessionAttributes(types=Team19CommentForm.class)
 public class Team19Controller {
 	
@@ -91,7 +91,10 @@ public class Team19Controller {
 	
 	//曲追加ボタン
 	@PostMapping(value="/team19_4", params="add")
-	public String add() {
+	public String add(@ModelAttribute @Validated Team19RegisterForm team19registerForm,BindingResult result) {
+		if(result.hasErrors()) {
+			return "team19/Team19Register";
+		}
 		return "team19/Team19Register";
 	}
 	

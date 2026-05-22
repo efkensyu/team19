@@ -1,40 +1,45 @@
-<!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.ofg">
-<head>
-<meta charset="UTF-8">
-<title>登録画面</title>
-<link rel="stylesheet" type="text/css" href="Team19.css")>
-</head>
-<body>
-	<h2>登録画面</h2>
-	<form method="post" th:action="@{team19_4}">
-		<input type="submit" name="add" value="追加">
-		<input type="submit" name="register" value="登録">
-		<input type="submit" name="back" value="戻る">
-		<p>ジャンルを選択してください</p>
-		<select name="ジャンル選択">
-			<option value="J-POP">J-POP -邦楽-</option>
-			<option value="Inst">Instrumental -インスト-</option>
-			<option value="Anime">Anime・VocaloidSong -アニソン・ボーカロイド-</option>
-			<option value="Forigen">Forigen Music -洋楽-</option>
-			<option value="Other">Other -その他のジャンル-</option>
-		</select>
-		<p>気分を選択してください</p>
-		<select name="気分選択">
-			<option value="JOY">JOY -楽しい-</option>
-			<option value="SAD">SAD -落ち込んでいる-</option>
-			<option value="EXCITING">EXCITING -盛り上がる-</option>
-			<option value="RELAX">RELAX -リラックス-</option>
-		</select>
-		<br>
-		<p>曲名を入力してください</p>
-		<input type="text" name="textbox1" size="20">
-		<br>
-		<p>アーティスト名を入力してください</p>
-		<input type="text" name="textbox1" size="20">
-		<br>
-		<p>曲のURLを入力してください※SpotifyのURLのみ有効です</p>
-		<input type="text" name="textbox1" size="100">
-	</form>
-</body>
-</html>
+<!--<!DOCTYPE html>-->
+<!--<html xmlns:th="http://www.thymeleaf.ofg">-->
+<!--<head>-->
+<!--<meta charset="UTF-8">-->
+<!--<title>登録画面</title>-->
+<!--<link rel="stylesheet" type="text/css" href="Team19.css">-->
+<!--</head>-->
+<!--<body>-->
+<!--	<h2>登録画面</h2>-->
+<!--	<form method="post" th:action="@{team19_4}"th:object="${Team19RegisterForm}">-->
+<!--		<input type="submit" name="add" value="追加">-->
+<!--		<input type="submit" name="register" value="登録">-->
+<!--		<input type="submit" name="back" value="戻る">-->
+<!--		<p>ジャンルを選択してください</p>-->
+<!--		<select name="janru">-->
+<!--			<option value="J-POP">J-POP -邦楽-</option>-->
+<!--			<option value="Inst">Instrumental -インスト-</option>-->
+<!--			<option value="Anime">Anime・VocaloidSong -アニソン・ボーカロイド-</option>-->
+<!--			<option value="Forigen">Forigen Music -洋楽-</option>-->
+<!--			<option value="Other">Other -その他のジャンル-</option>-->
+<!--			<th:block th:if="${#fields.hasErrors('Janru')}" th:errors="*{Janru}"></th:block>-->
+<!--		</select>-->
+<!--		<p>気分を選択してください</p>-->
+<!--		<select name="Mood">-->
+<!--			<option value="JOY">JOY -楽しい-</option>-->
+<!--			<option value="SAD">SAD -落ち込んでいる-</option>-->
+<!--			<option value="EXCITING">EXCITING -盛り上がる-</option>-->
+<!--			<option value="RELAX">RELAX -リラックス-</option>-->
+<!--			<th:block th:if="${#fields.hasErrors('Mood')}" th:errors="*{Mood}"></th:block>-->
+<!--		</select>-->
+<!--		<br>-->
+<!--		<p>曲名を入力してください</p>-->
+<!--		<input type="text" name="MusicNm" size="20">-->
+<!--		<th:block th:if="${#fields.hasErrors('MusicNm')}" th:errors="*{MusicNm}"></th:block>-->
+<!--		<br>-->
+<!--		<p>アーティスト名を入力してください</p>-->
+<!--		<input type="text" name="Artist" size="20">-->
+<!--		<th:block th:if="${#fields.hasErrors('Artist')}" th:errors="*{Artist}"></th:block>-->
+<!--		<br>-->
+<!--		<p>曲のURLを入力してください※SpotifyのURLのみ有効です</p>-->
+<!--		<input type="text" name="Url" size="100">-->
+<!--		<th:block th:if="${#fields.hasErrors('Url')}" th:errors="*{Url}"></th:block>-->
+<!--	</form>-->
+<!--</body>-->
+<!--</html>-->
