@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.ofg">
+<head>
+<meta charset="UTF-8">
+<title>登録結果画面</title>
+</head>
+<body>
+<form method="post" th:action="@{team19_4}"th:object="${team19RegisterForm}">
+	<input type="submit" value="戻る" name="back">
+	<h1>登録が完了しました。</h1>
+	<p>あなたが登録した曲リスト</p>
+	<table border ="1">
+		<tr>
+			<th>番号</th>
+			<th>ジャンル</th>
+			<th>気分</th>
+			<th>曲名</th>
+			<th>アーティスト名</th>
+			<th>曲のURL</th>
+		</tr>
+		<tr th:each="data,st :${result}" th:object="${data}">
+			<td th:text="${st.count}"></td>
+			<td th:text="*{Janru}"></td>
+			<td th:text="*{Mood}"></td>
+			<td th:text="*{MusicNm}"></td>
+			<td th:text="*{Artist}"></td>
+			<td th:text="*{Url}"></td>
+		</tr>
+	</table>
+</form>
+</body>
