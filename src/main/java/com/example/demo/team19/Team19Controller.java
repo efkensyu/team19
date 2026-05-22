@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 @SessionAttributes(types= {Team19Form.class, Team19CommentForm.class})
 //@SessionAttributes(types=Team19CommentForm.class)
 public class Team19Controller {
+	
 	//名前セッション定義
 	@ModelAttribute("team19Form")
 	public Team19Form setup() {
@@ -32,6 +33,7 @@ public class Team19Controller {
 	//ようこそボタン
 	@PostMapping("/team19_1")
 	public String send1(@ModelAttribute @Validated Team19Form team19Form,BindingResult result) {
+		
 		if(result.hasErrors()) {
 			return "team19/Team19Home";
 		}
