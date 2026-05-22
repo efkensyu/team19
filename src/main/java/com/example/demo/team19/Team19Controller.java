@@ -1,6 +1,10 @@
 package com.example.demo.team19;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -12,6 +16,7 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 @SessionAttributes(types= {Team19Form.class, Team19CommentForm.class,Team19RegisterForm.class})
 //@SessionAttributes(types=Team19CommentForm.class)
 public class Team19Controller {
+	List<Team19RegisterForm> registerlist = new ArrayList<>();
 	
 	//名前セッション定義
 	@ModelAttribute("team19Form")
@@ -97,10 +102,19 @@ public class Team19Controller {
 		
 	//曲追加ボタン
 	@PostMapping(value="/team19_4", params="add")
-	public String add(@ModelAttribute @Validated Team19RegisterForm team19RegisterForm,BindingResult result) {
+	public String add(@ModelAttribute @Validated Team19RegisterForm team19RegisterForm,BindingResult result,Model model) {
 		if(result.hasErrors()) {
 			return "team19/Team19Register";
 		}
+		registerlist.add(team19RegisterForm);
+		model.addAttribute("result", registerlist);
+		return "team19/Team19Register";
+	}
+	
+	//曲登録画面の「削除」ボタン
+	@PostMapping(value="/team19_4", params="clear")
+	public String clear() {
+		registerlist.clear();
 		return "team19/Team19Register";
 	}
 	
@@ -110,6 +124,7 @@ public class Team19Controller {
 		if(result.hasErrors()) {
 			return "team19/Team19Register";
 		}
+		registerlist.clear();
 		return "team19/Team19Register";
 	}
 	
@@ -119,7 +134,5 @@ public class Team19Controller {
 	public String sendback5() {
 		return "team19/Team19Home";
 	}
-	
-	
 }
 	

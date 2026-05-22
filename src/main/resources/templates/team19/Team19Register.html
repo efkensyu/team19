@@ -11,6 +11,8 @@
 		<input type="submit" name="add" value="追加">
 		<input type="submit" name="register" value="登録">
 		<input type="submit" name="back" value="戻る">
+		<input type="submit" name="clear" value="削除">
+		
 		<p>ジャンルを選択してください</p>
 		<select name="Janru">
 			<option value="J-POP">J-POP -邦楽-</option>
@@ -38,6 +40,26 @@
 		<p>曲のURLを入力してください※SpotifyのURLのみ有効です</p>
 		<input type="text" th:field = "*{Url}" size="100">
 		<th:block th:if="${#fields.hasErrors('Url')}" th:errors="*{Url}"></th:block>
+
+		<p>あなたが曲を登録しようとしているリスト</p>
+		<table border ="1">
+			<tr>
+				<th>番号</th>
+				<th>ジャンル</th>
+				<th>気分</th>
+				<th>曲名</th>
+				<th>アーティスト名</th>
+				<th>曲のURL</th>
+			</tr>
+			<tr th:each="data,st :${result}" th:object="${data}">
+				<td th:text="${st.count}"></td>
+				<td th:text="*{Janru}"></td>
+				<td th:text="*{Mood}"></td>
+				<td th:text="*{MusicNm}"></td>
+				<td th:text="*{Artist}"></td>
+				<td th:text="*{Url}"></td>
+			</tr>
+		</table>	
 	</form>
 </body>
 </html>
