@@ -9,13 +9,19 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
 @Controller
-@SessionAttributes(types=Team19Form.class)
+@SessionAttributes(types= {Team19Form.class, Team19CommentForm.class})
+//@SessionAttributes(types=Team19CommentForm.class)
 public class Team19Controller {
 	//名前セッション定義
 	@ModelAttribute("team19Form")
 	public Team19Form setup() {
 		return new Team19Form();
 	}
+	//名前セッション定義
+		@ModelAttribute("team19CommentForm")
+		public Team19CommentForm setupComment() {
+			return new Team19CommentForm();
+		}
 	
 	//最初にアクセスした時
 	@GetMapping("/team19")
@@ -58,7 +64,7 @@ public class Team19Controller {
 	
 	//気分・ジャンル選択画面から結果表示に行くボタン
 	@PostMapping(value="/team19_2", params="forward")
-	public String sendforward2(@ModelAttribute @Validated Team19Form team19Form) {
+	public String sendforward2() {
 		return "team19/Team19Result";
 	}
 	
@@ -67,6 +73,13 @@ public class Team19Controller {
 	public String sendback2() {
 		return "team19/Team19Mood_Janru";
 	}
+	
+	//結果表示画面で、コメント登録ボタン
+	@PostMapping(value="/team19_3", params="submit")
+	public String submit(@ModelAttribute @Validated Team19Form team19Form,BindingResult result) {
+		return "team19/Team19Result";
+	}
+	
 	
 	//結果表示から、登録画面に行くボタン
 		@PostMapping(value="/team19_3", params="register")

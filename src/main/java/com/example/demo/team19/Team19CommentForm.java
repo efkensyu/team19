@@ -5,12 +5,10 @@ import jakarta.validation.constraints.NotBlank;
 import lombok.Data;
 
 @Data
-public class Team19Form {
+public class Team19CommentForm {
 	@NotBlank(message = "未入力です。" )	
-	private String name;
+	private String comment;
 	
 //	@NotBlank
 //	private String comment;
 }
-
-
