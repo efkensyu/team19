@@ -1,5 +1,6 @@
 package com.example.demo.team19;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -10,27 +11,38 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
 
+import com.example.demo.team19.team19Comment.Team19Comment;
+import com.example.demo.team19.team19Comment.Team19CommentService;
+import com.example.demo.team19.team19Music.Team19Music;
+import com.example.demo.team19.team19Music.Team19MusicService;
+
+import lombok.RequiredArgsConstructor;
+
 @Controller
+@RequiredArgsConstructor
 @SessionAttributes(types= {Team19Form.class, Team19CommentForm.class,Team19RegisterForm.class})
-//@SessionAttributes(types=Team19CommentForm.class)
 public class Team19Controller {
 	List<Team19RegisterForm> registerlist = new ArrayList<>();
+	
+	private final Team19MusicService musicService;
+	private final Team19CommentService musicComment;
 	
 	//名前セッション定義
 	@ModelAttribute("team19Form")
 	public Team19Form setup() {
 		return new Team19Form();
 	}
-	//名前セッション定義
+	//コメントセッション定義
 		@ModelAttribute("team19CommentForm")
 		public Team19CommentForm setupComment() {
 			return new Team19CommentForm();
 		}
 		
-	//registerform
+	//登録セッション定義
 	@ModelAttribute("team19RegisterForm")
 		public Team19RegisterForm setupRegister() {
 		    return new Team19RegisterForm();
@@ -78,7 +90,19 @@ public class Team19Controller {
 	
 	//気分・ジャンル選択画面から結果表示に行くボタン
 	@PostMapping(value="/team19_2", params="forward")
-	public String sendforward2() {
+	public String sendforward2(@RequestParam("mood") String mood,
+			@RequestParam("janru") String janru, Model model) {
+		//曲一覧作成
+		List<Team19Music> musicList = musicService.findMusic(mood, janru);
+		//コメント一覧作成(ムード、ジャンル絞り)
+		List<Team19Comment> commentList = musicComment.findAll();
+		model.addAttribute("mood", mood);
+		model.addAttribute("janru",janru);
+		//楽曲一覧表示
+		model.addAttribute("musicList", musicList);
+		//コメント一覧表示
+		model.addAttribute("commentList", commentList);
+		
 		return "team19/Team19Result";
 	}
 	
@@ -90,9 +114,33 @@ public class Team19Controller {
 	
 	//結果表示画面で、コメント登録ボタン
 	@PostMapping(value="/team19_3", params="submit")
-	public String submit(@ModelAttribute @Validated Team19Form team19Form,BindingResult result) {
-		return "team19/Team19Result";
+	public String submit(
+	        @RequestParam("mood") String mood,
+	        @RequestParam("janru") String janru,
+	        @ModelAttribute @Validated Team19CommentForm team19CommentForm,
+	        BindingResult result,
+	        Model model) {
+
+	    LocalDate date = LocalDate.now();
+
+	    List<Team19Music> musicList = musicService.findMusic(mood, janru);
+
+	    // ★ 曲IDで登録
+	    
+	    musicComment.insertComment(
+	            date,team19CommentForm.getMusicCd(),team19CommentForm.getComment()
+	            );
+	    
+	    List<Team19Comment> commentList = musicComment.findAll();
+
+	    model.addAttribute("mood", mood);
+	    model.addAttribute("janru", janru);
+	    model.addAttribute("musicList", musicList);
+	    model.addAttribute("commentList", commentList);
+
+	    return "team19/Team19Result";
 	}
+
 	
 	
 	//結果表示から、登録画面に行くボタン
@@ -103,7 +151,7 @@ public class Team19Controller {
 		
 	//曲追加ボタン
 	@PostMapping(value="/team19_4", params="add")
-	public String add(@ModelAttribute @Validated Team19RegisterForm team19RegisterForm,BindingResult result,Model model,SessionStatus sessionStatus) {
+	public String add(@ModelAttribute @Validated Team19RegisterForm team19RegisterForm,BindingResult result,Model model) {
 		if(result.hasErrors()) {
 			model.addAttribute("team19RegisterForm",new Team19RegisterForm());
 			return "team19/Team19Register";
@@ -124,12 +172,13 @@ public class Team19Controller {
 	
 	//曲登録確定ボタン
 	@PostMapping(value="/team19_4", params="register")
-	public String send5(@ModelAttribute @Validated Team19RegisterForm team19RegisterForm,BindingResult result, Model model,SessionStatus sessionStatus) {
-		if(result.hasErrors()) {
-			model.addAttribute("team19RegisterForm",new Team19RegisterForm());
-			return "team19/Team19Register";
+	public String send5(@ModelAttribute Team19RegisterForm team19RegisterForm,
+			BindingResult result, Model model,SessionStatus sessionStatus) {
+		//テーブル追加処理
+		for(Team19RegisterForm d : registerlist) {
+			musicService.insertMusic(d.getMusicNm(), d.getArtist(), d.getJanru(), d.getUrl(), d.getMood());
 		}
-		
+		//セッションのリフレッシュ
 		sessionStatus.setComplete();
 		model.addAttribute("result", registerlist);
 		return "team19/Team19RegisterResult";

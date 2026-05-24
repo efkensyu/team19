@@ -9,8 +9,58 @@
 	<form method="post" th:action="@{team19_3}">
 		
 	<h2>あなたの気分に合う曲</h2>
-	<textarea name="textarea1" rows="5" cols="30">この中に入力</textarea>
+	<p th:text="気分： + ${mood} "></p>
+	<input type="hidden" name="mood" th:value="${mood}">
+	<p th:text="ジャンル： + ${janru} "></p>
+	<input type="hidden" name="janru" th:value="${janru}">
+
+	<table border="1">
+		<tr>
+			<th>曲名</th>
+			<th>アーティスト名</th>
+			<th>再生URL</th>
+			<th>イイね数</th>
+		</tr>
+		<tr th:each="data : ${musicList}" th:object="${data}">
+			<td th:text="*{musicNm}"></td>
+			<td th:text="*{artist}"></td>
+			<td th:text="*{musicUrl}"></td>
+			<td th:text="*{likeCnt}"></td>
+		</tr>
+	</table>
+	
+	
+	<th:block th:object="${team19CommentForm}">
+	    <span>コメントする曲を選択してください</span>
+
+	    <select th:field="*{musicCd}">
+	        <option th:each="data : ${musicList}"
+	                th:value="${data.musicCd}"
+	                th:text="${data.musicNm}">
+	        </option>
+	    </select>
+
+	    <textarea th:field="*{comment}" rows="5" cols="30">この中に入力</textarea>
+	    <p th:if="${#fields.hasErrors('comment')}" th:errors="*{comment}"></p>
+	</th:block>
+
+	
+	
 	<input type="submit" value="送信" name="submit">
+	
+	<table border="1">
+			<tr>
+				<th>日時</th>
+				<th>曲名</th>
+				<th>コメント</th>
+			</tr>
+			<tr th:each="data,i : ${commentList}" th:object="${data}">
+				<td th:text="*{commentDate}"></td>
+				<td th:text="*{musicCd}"></td>
+				<td th:text="*{commentText}"></td>
+			</tr>
+		</table>
+	
 	<br>
 	<input type="submit" value="戻る" name="back">
 	<input type="submit" value="あなたも登録" name="register">

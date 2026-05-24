@@ -1,4 +1,4 @@
-package com.example.demo.team19.Janru;
+package com.example.demo.team19.team19Janru;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
@@ -9,7 +9,7 @@ import lombok.Data;
 @Entity
 @Table(name = "team19_janru_tbl")
 @Data
-public class Janru {
+public class Team19Janru {
 	@Id
 	private String janruCd;
 	private String janruNm;

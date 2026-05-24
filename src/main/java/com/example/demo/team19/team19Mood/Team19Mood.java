@@ -1,4 +1,4 @@
-package com.example.demo.team19.Mood;
+package com.example.demo.team19.team19Mood;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
@@ -9,7 +9,7 @@ import lombok.Data;
 @Entity
 @Table(name = "team19_kibun_tbl")
 @Data
-public class Mood {
+public class Team19Mood {
 	@Id
 	private String moodCd;
 	private String moodNm;

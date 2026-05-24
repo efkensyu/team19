@@ -8,7 +8,7 @@ import lombok.Data;
 public class Team19CommentForm {
 	@NotBlank(message = "未入力です。" )	
 	private String comment;
-	
+	private Integer musicCd;
 //	@NotBlank
 //	private String comment;
 }
