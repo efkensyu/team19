@@ -8,7 +8,7 @@
 <body>
 	<form method="post" th:action="@{team19_3}">
 		
-	<h2 class="result-text">あなたの気分に合う曲</h2>
+	<h2 class="result-text" th:text="${team19Form.name} + の気分に合う曲"></h2>
 	<p class="result-text2"th:text="気分： + ${mood} "></p>
 	<input type="hidden" name="mood" th:value="${mood}">
 	<p class="result-text2" th:text="ジャンル： + ${janru} "></p>
@@ -24,7 +24,7 @@
 		<tr th:each="data : ${musicList}" th:object="${data}">
 			<td th:text="*{musicNm}"></td>
 			<td th:text="*{artist}"></td>
-			<td th:text="*{musicUrl}"></td>
+			<td><a th:href="*{musicUrl}" th:text="クリックして再生ページへ！"></a></td>
 			<td th:text="*{likeCnt}"></td>
 		</tr>
 	</table>

@@ -117,6 +117,7 @@ public class Team19Controller {
 	public String submit(
 	        @RequestParam("mood") String mood,
 	        @RequestParam("janru") String janru,
+	        @ModelAttribute Team19Form team19Form,
 	        @ModelAttribute @Validated Team19CommentForm team19CommentForm,
 	        BindingResult result,
 	        Model model) {
@@ -172,8 +173,11 @@ public class Team19Controller {
 	
 	//曲登録確定ボタン
 	@PostMapping(value="/team19_4", params="register")
-	public String send5(@ModelAttribute Team19RegisterForm team19RegisterForm,
+	public String send5(@ModelAttribute @Validated Team19RegisterForm team19RegisterForm,
 			BindingResult result, Model model,SessionStatus sessionStatus) {
+		if(result.hasErrors()) {
+			return "team19/Team19Register";
+		}
 		//テーブル追加処理
 		for(Team19RegisterForm d : registerlist) {
 			musicService.insertMusic(d.getMusicNm(), d.getArtist(), d.getJanru(), d.getUrl(), d.getMood());
