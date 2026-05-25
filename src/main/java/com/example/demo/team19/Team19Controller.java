@@ -152,9 +152,9 @@ public class Team19Controller {
 		
 	//曲追加ボタン
 	@PostMapping(value="/team19_4", params="add")
-	public String add(@ModelAttribute @Validated Team19RegisterForm team19RegisterForm,BindingResult result,Model model) {
+	public String add(@ModelAttribute @Validated Team19RegisterForm team19RegisterForm,BindingResult result,Model model,SessionStatus sessionStatus) {
 		if(result.hasErrors()) {
-			model.addAttribute("team19RegisterForm",new Team19RegisterForm());
+			//model.addAttribute("team19RegisterForm",new Team19RegisterForm());
 			return "team19/Team19Register";
 		}
 		registerlist.add(team19RegisterForm);
@@ -173,8 +173,7 @@ public class Team19Controller {
 	
 	//曲登録確定ボタン
 	@PostMapping(value="/team19_4", params="register")
-	public String send5(@ModelAttribute @Validated Team19RegisterForm team19RegisterForm,
-			BindingResult result, Model model,SessionStatus sessionStatus) {
+	public String send5(@ModelAttribute Team19RegisterForm team19RegisterForm,BindingResult result, Model model,SessionStatus sessionStatus) {
 		if(result.hasErrors()) {
 			return "team19/Team19Register";
 		}
