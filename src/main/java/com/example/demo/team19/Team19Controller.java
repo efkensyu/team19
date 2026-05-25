@@ -174,7 +174,8 @@ public class Team19Controller {
 	//曲登録確定ボタン
 	@PostMapping(value="/team19_4", params="register")
 	public String send5(@ModelAttribute Team19RegisterForm team19RegisterForm,BindingResult result, Model model,SessionStatus sessionStatus) {
-		if(result.hasErrors()) {
+		if(registerlist == null || registerlist.isEmpty()) {
+			result.reject("emptyList", "登録データがありません");
 			return "team19/Team19Register";
 		}
 		//テーブル追加処理
