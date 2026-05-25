@@ -21,8 +21,8 @@ public class Team19CommentService {
 
 		public List<Team19Comment> findAll() {
 			// TODO 自動生成されたメソッド・スタブ
-			repository.findAll();
-			return null;
+			return repository.findAll();
+			
 		}
 
 }
