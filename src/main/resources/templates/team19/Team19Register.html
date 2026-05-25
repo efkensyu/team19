@@ -6,43 +6,43 @@
 <link rel="stylesheet" type="text/css" href="Team19.css">
 </head>
 <body>
-	<h2>登録画面</h2>
+	<h2 class="register-tittle">登録画面</h2>
 	<form method="post" th:action="@{team19_4}"th:object="${team19RegisterForm}">
+		<label class="register-botton">
 		<input type="submit" name="add" value="追加">
 		<input type="submit" name="register" value="登録">
 		<input type="submit" name="back" value="戻る">
 		<input type="submit" name="clear" value="削除">
-		
-		<p>ジャンルを選択してください</p>
-		<select th:field="*{Janru}">
+		</label>
+		<p class="register-text">ジャンルを選択してください</p>
+		<select class="register-janruselect" th:field="*{Janru}">
 			<option value="J-POP">J-POP -邦楽-</option>
 			<option value="インスト">Instrumental -インスト-</option>
 			<option value="アニソン・ボカロ">Anime・VocaloidSong -アニソン・ボーカロイド-</option>
 			<option value="洋楽">Forigen Music -洋楽-</option>
 			<option value="Other">Other -その他のジャンル-</option>
 		</select>
-		<p>気分を選択してください</p>
-		<select th:field="*{Mood}">
+		<p class="register-text">気分を選択してください</p>
+		<select class="register-moodselect"th:field="*{Mood}">
 			<option value="楽しい">JOY -楽しい-</option>
 			<option value="落ち込んでいる">SAD -落ち込んでいる-</option>
 			<option value="盛り上がる">EXCITING -盛り上がる-</option>
 			<option value="リラックス">RELAX -リラックス-</option>
 		</select>
 		<br>
-		<p>曲名を入力してください</p>
+		<p class="register-text">曲名を入力してください</p>
 		<input type="text" th:field ="*{MusicNm}" size="20">
 		<span th:if="${#fields.hasErrors('MusicNm')}" th:errors="*{MusicNm}"></span>
 		<br>
-		<p>アーティスト名を入力してください</p>
+		<p class="register-text">アーティスト名を入力してください</p>
 		<input type="text" th:field ="*{Artist}" size="20">
 		<th:block th:if="${#fields.hasErrors('Artist')}" th:errors="*{Artist}"></th:block>
 		<br>
-		<p>曲のURLを入力してください※SpotifyのURLのみ有効です</p>
+		<p class="register-text">曲のURLを入力してください※SpotifyのURLのみ有効です</p>
 		<input type="text" th:field = "*{Url}" size="100">
 		<th:block th:if="${#fields.hasErrors('Url')}" th:errors="*{Url}"></th:block>
-
-		<p>あなたが曲を登録しようとしているリスト</p>
-		<table border ="1">
+		<p class="rist-text">あなたが曲を登録しようとしているリスト</p>
+		<table class="list-table"border ="1">
 			<tr>
 				<th>番号</th>
 				<th>ジャンル</th>

@@ -8,13 +8,13 @@
 <body>
 	<form method="post" th:action="@{team19_3}">
 		
-	<h2>あなたの気分に合う曲</h2>
-	<p th:text="気分： + ${mood} "></p>
+	<h2 class="result-text">あなたの気分に合う曲</h2>
+	<p class="result-text2"th:text="気分： + ${mood} "></p>
 	<input type="hidden" name="mood" th:value="${mood}">
-	<p th:text="ジャンル： + ${janru} "></p>
+	<p class="result-text2" th:text="ジャンル： + ${janru} "></p>
 	<input type="hidden" name="janru" th:value="${janru}">
 
-	<table border="1">
+	<table class="list-table"border="1">
 		<tr>
 			<th>曲名</th>
 			<th>アーティスト名</th>
@@ -31,9 +31,9 @@
 	
 	
 	<th:block th:object="${team19CommentForm}">
-	    <span>コメントする曲を選択してください</span>
+	    <span class="result-comment-text">コメントする曲を選択してください</span>
 
-	    <select th:field="*{musicCd}">
+	    <select class="list-table"th:field="*{musicCd}">
 	        <option th:each="data : ${musicList}"
 	                th:value="${data.musicCd}"
 	                th:text="${data.musicNm}">
@@ -48,7 +48,7 @@
 	
 	<input type="submit" value="送信" name="submit">
 	
-	<table border="1">
+	<table class="list-table" border="1">
 			<tr>
 				<th>日時</th>
 				<th>曲名</th>
@@ -62,8 +62,10 @@
 		</table>
 	
 	<br>
+	<label class="result-botton">
 	<input type="submit" value="戻る" name="back">
 	<input type="submit" value="あなたも登録" name="register">
+	</label>
 	</form>
 	<a href="team19">Topページへ戻る</a>
 </body>

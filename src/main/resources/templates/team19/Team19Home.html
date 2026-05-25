@@ -6,14 +6,18 @@
 <link rel="stylesheet" type="text/css" href="Team19.css">
 </head>
 <body>
-<h1>あなたの今の気分から、至高の曲をお届けします。</h1>
-<p class="text1">名前を入力し、気分・ジャンル選択画面に移行してください</p>
+<h1 class="tittle">あなたの今の気分から、至高の曲をお届けします。</h1>
+<p class="home-text">名前を入力し、気分・ジャンル選択画面に移行してください</p>
 <form method="post" th:action="@{team19_1}" th:object="${team19Form}">
 	<input type="text" th:field="*{name}" size="20">
 	<th:block th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></th:block>
+	<label class="home-botton">
 	<input type="submit" value="確定">
-	<p class="text2">自分のお気に入りの曲を、他の人にシェアも出来ます。</p>
+	</label>
+	<p class="home-text">自分のお気に入りの曲を、他の人にシェアも出来ます。</p>
+	<label class="home-botton">
 	<input type="submit" name="register" value="曲登録ページ">
+	</label>
 </form>
 </body>
 </html>

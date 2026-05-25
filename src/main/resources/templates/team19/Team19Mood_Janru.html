@@ -7,25 +7,31 @@
 </head>
 <body>
 	<form method="post" th:action="@{team19_2}">
-		<h2>気分を選択してください</h2>
+		<h2 class="mood-janru-text">気分を選択してください</h2>
+		<label class="mood-janru-moodselect-radio">
 		<input type="radio" name="mood" value="楽しい" checked="checked">JOY -楽しい-
 		<input type="radio" name="mood" value="落ち込んでいる">SAD -落ち込んでいる-
 		<br>
 		<input type="radio" name="mood" value="盛り上がる">EXCITING -盛り上がる-
 		<input type="radio" name="mood" value="リラックス">RELAX -リラックス-
+		</label>
 		<br>
-		<h2>ジャンルを選択してください</h2>
+		<h2 class="mood-janru-text">ジャンルを選択してください</h2>
+		<label class="mood-janru-janruselect-radio">
 		<input type="radio" name="janru" value="J-POP" checked="checked">J-POP -邦楽-
 		<input type="radio" name="janru" value="インスト">Instrumental -インスト-
 		<br>
 		<input type="radio" name="janru" value="アニソン・ボカロ">Anime・VocaloidSong -アニソン・ボーカロイド-
 		<input type="radio" name="janru" value="洋楽">Forigen Music -洋楽-
 		<input type="radio" name="janru" value="その他">Other -その他のジャンル-
+		</label>
 		<br>
+		<label class="mood-janru-botton">
 		<input type="submit" value="選択をリセット" name="reset">
 		<br>
 		<input type="submit" value="戻る" name="back">
 		<input type="submit" value="結果表示" name="forward">
+		</label>
 	</form>
 </body>
 </html>
