@@ -131,14 +131,12 @@ public class Team19Controller {
 	    musicComment.insertComment(
 	            date,team19CommentForm.getMusicCd(),team19CommentForm.getComment()
 	            );
-	    
+	    model.addAttribute("team19CommentForm",new Team19CommentForm());
 	    List<Team19Comment> commentList = musicComment.findAll();
-
 	    model.addAttribute("mood", mood);
 	    model.addAttribute("janru", janru);
 	    model.addAttribute("musicList", musicList);
 	    model.addAttribute("commentList", commentList);
-
 	    return "team19/Team19Result";
 	}
 
