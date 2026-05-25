@@ -1,6 +1,6 @@
 package com.example.demo.team19.team19Comment;
 
-import java.time.LocalDate;
+import java.sql.Date;
 import java.util.List;
 
 import org.springframework.stereotype.Service;
@@ -15,7 +15,7 @@ public class Team19CommentService {
 			return repository.selectComment(mood, janru);
 		}
 		
-		public void insertComment(LocalDate date, Integer musicCd, String text) {
+		public void insertComment(Date date, Integer musicCd, String text) {
 			repository.insertComment(date, musicCd, text);
 		}
 

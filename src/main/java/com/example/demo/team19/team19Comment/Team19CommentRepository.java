@@ -1,6 +1,6 @@
 package com.example.demo.team19.team19Comment;
 
-import java.time.LocalDate;
+import java.sql.Date;
 import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -24,7 +24,7 @@ public interface Team19CommentRepository extends JpaRepository<Team19Comment, In
 	@Query(value ="INSERT INTO team19_comment_tbl (comment_date, music_cd, comment_text) " +
 	              "VALUES (:date, :musicCd, :text)",
 	       nativeQuery = true)
-	public void insertComment(@Param("date") LocalDate date,
+	public void insertComment(@Param("date") Date date,
 	                   @Param("musicCd") Integer musicCd,
 	                   @Param("text") String text);
 	

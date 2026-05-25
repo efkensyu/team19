@@ -1,6 +1,6 @@
 package com.example.demo.team19;
 
-import java.time.LocalDate;
+import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -121,7 +121,7 @@ public class Team19Controller {
 	        BindingResult result,
 	        Model model) {
 
-	    LocalDate date = LocalDate.now();
+	    Date date = new Date(System.currentTimeMillis());
 
 	    List<Team19Music> musicList = musicService.findMusic(mood, janru);
 

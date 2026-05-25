@@ -1,6 +1,6 @@
 package com.example.demo.team19.team19Comment;
 
-import java.time.LocalDate;
+import java.sql.Date;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -17,7 +17,7 @@ public class Team19Comment {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer commentCd;
-	private LocalDate commentDate;
+	private Date commentDate;
 	private Integer musicCd;
 	private String commentText;
 	
