@@ -49,7 +49,7 @@ public class Team19Controller {
 		}	
 	
 	//最初にアクセスした時
-	@GetMapping("/team19")
+	@GetMapping("team19")
 	public String  index() {
 		return "team19/Team19Home";
 	}
