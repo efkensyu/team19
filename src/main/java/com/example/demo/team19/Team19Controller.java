@@ -24,10 +24,10 @@ import lombok.RequiredArgsConstructor;
 
 @Controller
 @RequiredArgsConstructor
-@SessionAttributes(types= {Team19Form.class, Team19CommentForm.class,Team19RegisterForm.class})
+@SessionAttributes(types= {Team19Form.class, Team19CommentForm.class,Team19CommentForm2.class,Team19RegisterForm.class})
 public class Team19Controller {
 	List<Team19RegisterForm> registerlist = new ArrayList<>();
-	
+	List<Team19CommentForm2> comeList = new ArrayList<>();
 	private final Team19MusicService musicService;
 	private final Team19CommentService musicComment;
 	
@@ -96,12 +96,17 @@ public class Team19Controller {
 		List<Team19Music> musicList = musicService.findMusic(mood, janru);
 		//コメント一覧作成(ムード、ジャンル絞り)
 		List<Team19Comment> commentList = musicComment.findAll();
+		
+		for (Team19Comment d : commentList) {
+	        comeList.add(  new Team19CommentForm2( d.getCommentDate(), musicService.disMusicNm(d.getMusicCd()), d.getCommentText()) );
+	    }
+		
 		model.addAttribute("mood", mood);
 		model.addAttribute("janru",janru);
 		//楽曲一覧表示
 		model.addAttribute("musicList", musicList);
 		//コメント一覧表示
-		model.addAttribute("commentList", commentList);
+		model.addAttribute("comeList", comeList);
 		
 		return "team19/Team19Result";
 	}
@@ -132,11 +137,13 @@ public class Team19Controller {
 	            date,team19CommentForm.getMusicCd(),team19CommentForm.getComment()
 	            );
 	    model.addAttribute("team19CommentForm",new Team19CommentForm());
-	    List<Team19Comment> commentList = musicComment.findAll();
+	    
+	    comeList.add(  new Team19CommentForm2( date, musicService.disMusicNm(team19CommentForm.getMusicCd()), team19CommentForm.getComment()) );
+	    	    
 	    model.addAttribute("mood", mood);
 	    model.addAttribute("janru", janru);
 	    model.addAttribute("musicList", musicList);
-	    model.addAttribute("commentList", commentList);
+	    model.addAttribute("comeList", comeList);
 	    return "team19/Team19Result";
 	}
 

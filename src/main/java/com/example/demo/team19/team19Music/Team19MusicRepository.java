@@ -13,6 +13,8 @@ public interface Team19MusicRepository extends JpaRepository<Team19Music,Integer
 	@Query(value = "select music_cd, music_nm, artist, msc.janru_cd, music_Url,msc.mood_cd, like_Cnt from team19_music_tbl msc join team19_kibun_tbl m on msc.mood_cd = m.mood_cd join team19_janru_tbl j on msc.janru_cd =j.janru_cd where m.mood_nm = :mood and j.janru_nm = :janru", nativeQuery = true)
 	public List<Team19Music> findMusic(@Param("mood") String mood, @Param("janru") String janru);
 	
+	@Query(value = "select music_nm from team19_music_tbl where music_cd = :musicCd", nativeQuery = true)
+	public String disMusicNm(@Param("musicCd") Integer musicCd);
 	
 	@Modifying
 	@Transactional

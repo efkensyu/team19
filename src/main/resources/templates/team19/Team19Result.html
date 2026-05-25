@@ -54,10 +54,10 @@
 				<th>曲名</th>
 				<th>コメント</th>
 			</tr>
-			<tr th:each="data,i : ${commentList}" th:object="${data}">
+			<tr th:each="data,i : ${comeList}" th:object="${data}">
 				<td th:text="*{commentDate}"></td>
-				<td th:text="*{musicCd}"></td>
-				<td th:text="*{commentText}"></td>
+				<td th:text="*{musicNm}"></td>
+				<td th:text="*{comment}"></td>
 			</tr>
 		</table>
 	

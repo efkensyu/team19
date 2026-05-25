@@ -19,6 +19,10 @@ public class Team19MusicService {
 			return repository.findMusic(mood, janru);
 		}
 		
+		public String disMusicNm(Integer musicCd) {
+			return repository.disMusicNm(musicCd);
+		}
+		
 		public void insertMusic(String name, String artist, String janru, String url, String mood){
 			repository.insertMusic(name, artist, janru, url, mood);
 		}
