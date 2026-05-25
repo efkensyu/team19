@@ -1,3 +1,188 @@
-body {	
-	 
+/* ==========================================
+   1. 全体のベースデザイン
+   ========================================== */
+body {
+    background: linear-gradient(135deg, #0b111e 0%, #060913 100%);
+    color: #f3f4f6;
+    font-family: 'Helvetica Neue', Arial, 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', sans-serif;
+    line-height: 1.6;
+    margin: 0;
+    padding: 40px 20px;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+form {
+    background: rgba(255, 255, 255, 0.03);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(59, 130, 246, 0.2);
+    padding: 40px;
+    border-radius: 12px;
+    width: 100%;
+    max-width: 700px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+    box-sizing: border-box;
+    margin-bottom: 20px;
+}
+
+/* ==========================================
+   2. タイトルとテキスト
+   ========================================== */
+.tittle, .register-tittle {
+    font-size: 1.8rem;
+    font-weight: 700;
+    text-align: center;
+    background: linear-gradient(90deg, #3b82f6, #06b6d4);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 25px;
+    letter-spacing: 0.05em;
+}
+
+h2.mood-janru-text {
+    font-size: 1.2rem;
+    color: #38bdf8;
+    border-left: 4px solid #3b82f6;
+    padding-left: 10px;
+    margin-top: 30px;
+    margin-bottom: 20px;
+}
+
+p, .home-text, .register-text, .result-text2 {
+    color: #9ca3af;
+    font-size: 0.95rem;
+}
+
+/* ==========================================
+   3. 【最重要】ラジオボタンまわりの崩れを綺麗に直す
+   ========================================== */
+/* ラジオボタンを囲むlabelの文字位置や余白を整える */
+.mood-janru-moodselect-radio, 
+.mood-janru-janruselect-radio {
+    display: flex;
+    flex-wrap: wrap;       /* 画面幅に合わせて折り返す */
+    gap: 16px 24px;        /* ラジオボタン同士の間隔 */
+    margin-bottom: 25px;
+    color: #e5e7eb;
+    font-size: 0.95rem;
+}
+
+/* HTML側の <br> を無視して、1つずつきれいに整列させる */
+.mood-janru-moodselect-radio br,
+.mood-janru-janruselect-radio br {
+    display: none;
+}
+
+/* ラジオボタン本体と文字の縦位置を中央でビシッと揃える */
+input[type="radio"] {
+    accent-color: #3b82f6;
+    margin-right: 6px;
+    vertical-align: middle;
+    transform: scale(1.1);
+    cursor: pointer;
+}
+
+/* ==========================================
+   4. 【最重要】下の3つのボタンを美しく一列に並べる
+   ========================================== */
+.mood-janru-botton {
+    display: flex;         /* 横並びにする */
+    justify-content: center; /* 中央に寄せる */
+    align-items: center;
+    gap: 12px;             /* ボタン同士のすき間 */
+    margin-top: 35px;
+    width: 100%;
+}
+
+/* ボタン内の不要な改行を消す */
+.mood-janru-botton br {
+    display: none;
+}
+
+/* ボタンの共通デザイン */
+input[type="submit"] {
+    background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    box-shadow: 0 4px 12px rgba(59, 130, 246, 0.2);
+    
+    /* 横幅を完全に統一 */
+    width: 150px;
+    text-align: center;
+    box-sizing: border-box;
+    margin: 0; /* 余計なマージンをリセット */
+}
+
+input[type="submit"]:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(59, 130, 246, 0.4);
+    filter: brightness(1.1);
+}
+
+/* 「戻る」や「選択をリセット」はグレーにする */
+input[type="submit"][value="戻る"],
+input[type="submit"][value="選択をリセット"],
+input[type="submit"][value="削除"] {
+    background: rgba(255, 255, 255, 0.08);
+    color: #d1d5db;
+    box-shadow: none;
+}
+
+input[type="submit"][value="戻る"]:hover,
+input[type="submit"][value="選択をリセット"]:hover,
+input[type="submit"][value="削除"]:hover {
+    background: rgba(255, 255, 255, 0.15);
+    color: #fff;
+}
+
+/* ==========================================
+   5. テーブル・入力フォーム（その他画面用）
+   ========================================== */
+input[type="text"], select, textarea {
+    width: 100%;
+    padding: 12px;
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 6px;
+    color: #ffffff;
+    font-size: 1rem;
+    transition: all 0.2s ease;
+    box-sizing: border-box;
+    margin-bottom: 15px;
+}
+
+.list-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    font-size: 0.9rem;
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: 8px;
+    overflow: hidden;
+    border: none !important;
+}
+
+.list-table th, .list-table td {
+    padding: 12px 15px;
+    text-align: left;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.list-table th {
+    background-color: rgba(59, 130, 246, 0.15);
+    color: #38bdf8;
+    font-weight: 600;
+}
+
+a {
+    color: #38bdf8;
+    text-decoration: none;
 }
