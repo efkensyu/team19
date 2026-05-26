@@ -19,15 +19,15 @@ import lombok.extern.slf4j.Slf4j;
 @RequiredArgsConstructor
 public class Team19Aspect {
 	
-//	@Around("execution(* com.example.demo.team19.*.*(..))")
-//	public Object errorLog(ProceedingJoinPoint jp) throws Throwable{	
-//		try {
-//			Object result = jp.proceed();
-//			return result;
-//			}catch(Exception e) {
-//				return "team19/Team19Error";
-//			}
-//		}
+	@Around("execution(* com.example.demo.team19.*.*(..))")
+	public Object errorLog(ProceedingJoinPoint jp) throws Throwable{	
+		try {
+			Object result = jp.proceed();
+			return result;
+			}catch(Exception e) {
+				return "team19/Team19Error";
+			}
+		}
 	@Around("execution(* com.example.demo.team19.Team19Controller.*(..))")
 	public Object aroundLog(ProceedingJoinPoint jp) throws Throwable{	
 		
