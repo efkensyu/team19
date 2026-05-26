@@ -96,20 +96,21 @@ input[type="radio"] {
 
 
 /* ==========================================
-   4. 【最重要】下の3つのボタンを美しく一列に並べる
+   4. 下のボタンを美しく一列に並べる（メイン・登録画面共通）
    ========================================== */
-.mood-janru-botton {
-    display: flex;         /* 横並びにする */
+.mood-janru-botton, .register-botton {
+    display: flex;           /* 横並びにする */
     justify-content: center; /* 中央に寄せる */
     align-items: center;
-    gap: 12px;             /* ボタン同士のすき間 */
-    margin-top: 35px;
+    gap: 12px;               /* ボタン同士のすき間 */
+    margin-top: 25px;
+    margin-bottom: 30px;     /* ボタンの下側にしっかり余白を作る */
     width: 100%;
 }
 
 /* ボタン内の不要な改行を消す */
-.mood-janru-botton br {
-    display: none;
+.mood-janru-botton br, .register-botton br {
+    display: none !important;
 }
 
 /* ボタンの共通デザイン */
@@ -138,10 +139,11 @@ input[type="submit"]:hover {
     filter: brightness(1.1);
 }
 
-/* 「戻る」や「選択をリセット」はグレーにする */
+/* 「戻る」「選択をリセット」「削除」ボタンは目立たないグレーにする */
 input[type="submit"][value="戻る"],
 input[type="submit"][value="選択をリセット"],
-input[type="submit"][value="削除"] {
+input[type="submit"][value="削除"],
+input[type="submit"][value="clear"] {
     background: rgba(255, 255, 255, 0.08);
     color: #d1d5db;
     box-shadow: none;
@@ -149,13 +151,14 @@ input[type="submit"][value="削除"] {
 
 input[type="submit"][value="戻る"]:hover,
 input[type="submit"][value="選択をリセット"]:hover,
-input[type="submit"][value="削除"]:hover {
+input[type="submit"][value="削除"]:hover,
+input[type="submit"][value="clear"]:hover {
     background: rgba(255, 255, 255, 0.15);
     color: #fff;
 }
 
 /* ==========================================
-   5. テーブル・入力フォーム（その他画面用）
+   5. テーブル・入力フォーム（登録画面用）
    ========================================== */
 input[type="text"], select, textarea {
     width: 100%;
@@ -170,27 +173,77 @@ input[type="text"], select, textarea {
     margin-bottom: 15px;
 }
 
-.list-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin: 20px 0;
-    font-size: 0.9rem;
-    background: rgba(0, 0, 0, 0.3);
-    border-radius: 8px;
-    overflow: hidden;
-    border: none !important;
+/* セレクトボックスの選択肢（ドロップダウン）の文字を見えやすく */
+select option {
+    background-color: #111827;
+    color: #ffffff;
 }
 
+/* 【新設】テーブル全体を横スクロールさせるためのコンテナ */
+.table-container {
+    width: 100%;
+    overflow-x: auto;         /* 横方向にはみ出したらここにスクロールバーを出す */
+    margin: 30px 0 20px 0;   
+    border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.15); /* 枠線をコンテナ側に引っ越し */
+    background: rgba(0, 0, 0, 0.3);
+}
+
+/* 【新設】全体の共通スクロールバーのデザイン（細くスタイリッシュに） */
+.table-container::-webkit-scrollbar {
+    height: 8px;              /* スクロールバーの太さ */
+}
+.table-container::-webkit-scrollbar-thumb {
+    background: rgba(59, 130, 246, 0.5); /* バーの色（半透明の青） */
+    border-radius: 4px;
+}
+.table-container::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.05); 
+}
+
+/* 【修正】リストテーブルのスタイル */
+.list-table {
+    width: 100%;
+    min-width: 800px;        /* 【重要】テーブルの最低横幅を確保して、必ず横スクロールが発生するようにする */
+    border-collapse: collapse;
+    font-size: 0.9rem;
+    table-layout: fixed;     /* 列の幅を固定 */
+}
+
+/* 表の中の横線・縦線のデザイン */
 .list-table th, .list-table td {
     padding: 12px 15px;
     text-align: left;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+    border-right: 1px solid rgba(255, 255, 255, 0.05); 
+    vertical-align: middle;  
+}
+
+/* 各列の幅を固定（スクロールしたときに型崩れしないように％で配分） */
+.list-table th:nth-child(1), .list-table td:nth-child(1) { width: 6%; }  /* 番号 */
+.list-table th:nth-child(2), .list-table td:nth-child(2) { width: 12%; } /* ジャンル */
+.list-table th:nth-child(3), .list-table td:nth-child(3) { width: 12%; } /* 気分 */
+
+/* 【曲名・アーティスト名・URL】の3つの欄をすべて改行なしの横文字にする */
+.list-table th:nth-child(4), .list-table td:nth-child(4), /* 曲名 */
+.list-table th:nth-child(5), .list-table td:nth-child(5), /* アーティスト名 */
+.list-table th:nth-child(6), .list-table td:nth-child(6)  /* URL */ { 
+    width: 23%; 
+    white-space: nowrap;     /* 絶対に自動改行させず、きれいな横文字にする */
+    overflow: hidden;        /* はみ出た文字は隠す（スクロールで読めるようになります） */
+    text-overflow: ellipsis; /* 通常時は長すぎたら末尾を「...」にする */
+}
+
+/* 一番右端の列だけは右の縦線を消してスッキリさせる */
+.list-table th:last-child, .list-table td:last-child {
+    border-right: none;
 }
 
 .list-table th {
     background-color: rgba(59, 130, 246, 0.15);
     color: #38bdf8;
     font-weight: 600;
+    border-bottom: 2px solid rgba(59, 130, 246, 0.4); 
 }
 
 a {
@@ -199,10 +252,9 @@ a {
 }
 
 .error-message {
-	color: red;
-}
-
-select option {
-    background-color: #111827;
-    color: #ffffff;
+    color: #ef4444;
+    display: block;
+    margin-top: -10px;
+    margin-bottom: 15px;
+    font-size: 0.85rem;
 }
