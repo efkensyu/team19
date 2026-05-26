@@ -95,7 +95,7 @@ public class Team19Controller {
 		List<Team19Music> musicList = musicService.findMusic(mood, janru);
 		
 		//コメント一覧作成(ムード、ジャンル絞り)
-		List<Team19Comment> commentList = musicComment.selectComment("楽しい","J-POP");
+		List<Team19Comment> commentList = musicComment.selectComment(janru, mood);
 		
 		if (!commentList.isEmpty()) {
 		    System.out.println(commentList.get(0).getCommentText());
