@@ -18,6 +18,13 @@
 			<p class="error-message" th:each="err : ${#fields.globalErrors()}"
 			th:text="${err}"></p>
 		</div>
+		<p class="register-text">気分を選択してください</p>
+				<select class="register-moodselect"th:field="*{Mood}">
+					<option value="楽しい">JOY -楽しい-</option>
+					<option value="落ち込んでいる">SAD -落ち込んでいる-</option>
+					<option value="盛り上がる">EXCITING -盛り上がる-</option>
+					<option value="リラックス">RELAX -リラックス-</option>
+				</select>
 		<p class="register-text">ジャンルを選択してください</p>
 		<select class="register-janruselect" th:field="*{Janru}">
 			<option value="J-POP">J-POP -邦楽-</option>
@@ -26,13 +33,7 @@
 			<option value="洋楽">Forigen Music -洋楽-</option>
 			<option value="その他">Other -その他のジャンル-</option>
 		</select>
-		<p class="register-text">気分を選択してください</p>
-		<select class="register-moodselect"th:field="*{Mood}">
-			<option value="楽しい">JOY -楽しい-</option>
-			<option value="落ち込んでいる">SAD -落ち込んでいる-</option>
-			<option value="盛り上がる">EXCITING -盛り上がる-</option>
-			<option value="リラックス">RELAX -リラックス-</option>
-		</select>
+		
 		<br>
 		<p class="register-text">曲名を入力してください</p>
 		<input type="text" th:field ="*{MusicNm}" size="20">
