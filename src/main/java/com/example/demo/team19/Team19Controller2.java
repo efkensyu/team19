@@ -70,6 +70,21 @@ public class Team19Controller2 {
 				result.reject("emptyList", "登録データがありません");
 				return "team19/Team19Register";
 			}
+			
+			for (Team19RegisterForm d : registerlist) {
+				
+				boolean exists = musicService.existsByUrl(d.getUrl());
+				
+				if(exists) {
+					result.reject(
+							"duplicateUrl",
+							"URL「" + d.getUrl() + "」は既に登録済みです。"
+							);
+							model.addAttribute("result", registerlist);
+							return "team19/Team19Register";
+				}			
+			}
+			
 			//テーブル追加処理
 			for(Team19RegisterForm d : registerlist) {
 				musicService.insertMusic(d.getMusicNm(), d.getArtist(), d.getJanru(), d.getUrl(), d.getMood());
