@@ -56,14 +56,14 @@ p, .home-text, .register-text, .result-text2 {
 }
 
 /* ==========================================
-   3. 【決定版】ラジオボタンと文字を同じ行に横並びにする
+   3. 【決定版】ラジオボタンを完全な縦一列に並べる
    ========================================== */
 .mood-janru-moodselect-radio, 
 .mood-janru-janruselect-radio {
-    display: grid;                  /* Gridレイアウトに切り替え */
-    grid-template-columns: auto 1fr;/* 左に丸ぽち(自動幅)、右に文字(残り全部) */
-    align-items: center;            /* 丸ぽちと文字の縦の中心をビシッと揃える */
-    gap: 12px 10px;                 /* 行間 12px、丸ぽちと文字の間 10px */
+    display: flex;                  /* GridからFlexboxに戻す */
+    flex-direction: column;         /* 上から下に縦一列に並べる */
+    align-items: flex-start;        /* 左端にカチッと揃える */
+    gap: 16px;                      /* 選択肢ごとの上下の間隔 */
     margin-bottom: 25px;
     color: #e5e7eb;
     font-size: 0.95rem;
@@ -76,23 +76,22 @@ p, .home-text, .register-text, .result-text2 {
     display: none !important;
 }
 
-/* もし文字が <p> や <span> で囲まれていた場合の隙間リセット */
-.mood-janru-moodselect-radio p,
-.mood-janru-janruselect-radio p,
+/* ラジオボタンと文字を1つの塊にして、縦中央で高さを揃える */
 .mood-janru-moodselect-radio label,
 .mood-janru-janruselect-radio label {
-    margin: 0;
-    padding: 0;
-    display: inline; /* 横に並ぶように強制 */
+    display: inline-flex;           /* ボタンと文字を横一列にする */
+    align-items: center;            /* 丸ぽちと文字の縦の中心をビシッと揃える */
+    cursor: pointer;
+    width: 100%;                    /* タップ領域を広げる */
 }
 
 /* ラジオボタン本体（丸ぽち）の微調整 */
 input[type="radio"] {
     accent-color: #3b82f6;
-    margin: 0;                      /* 余計な余白をカット */
+    margin: 0 12px 0 0;             /* 右側にだけ12pxの隙間を作って文字と離す */
     transform: scale(1.1);
     cursor: pointer;
-    grid-column: 1;                 /* 必ず1列目（左側）に配置 */
+    flex-shrink: 0;                 /* 文字が長くなっても丸ぽちが潰れないように固定 */
 }
 
 
