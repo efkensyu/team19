@@ -33,7 +33,7 @@
 	<th:block th:object="${team19CommentForm}">
 	    <span class="result-comment-text">コメントする曲を選択してください</span>
 
-	    <select class="list-table"th:field="*{musicCd}">
+	    <select class="list-table" th:field="*{musicCd}">
 	        <option th:each="data : ${musicList}"
 	                th:value="${data.musicCd}"
 	                th:text="${data.musicNm}">
