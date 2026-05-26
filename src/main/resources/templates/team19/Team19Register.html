@@ -8,12 +8,12 @@
 <body>
 	<h2 class="register-tittle">登録画面</h2>
 	<form method="post" th:action="@{team19_4}"th:object="${team19RegisterForm}">
-		<label class="register-botton">
+		<div class="register-botton">
 		<input type="submit" name="add" value="追加">
 		<input type="submit" name="register" value="登録">
 		<input type="submit" name="back" value="戻る">
 		<input type="submit" name="clear" value="削除">
-		</label>
+		</div>
 		<div  th:if="${#fields.hasGlobalErrors()}">
 			<p class="error-message" th:each="err : ${#fields.globalErrors()}"
 			th:text="${err}"></p>
