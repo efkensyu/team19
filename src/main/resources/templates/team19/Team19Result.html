@@ -24,7 +24,7 @@
 		<tr th:each="data : ${musicList}" th:object="${data}">
 			<td th:text="*{musicNm}"></td>
 			<td th:text="*{artist}"></td>
-			<td><a th:href="*{musicUrl}" th:text="クリックして再生ページへ！"></a></td>
+			<td><a th:href="*{musicUrl}" target="_brank" th:text="クリックして再生ページへ！"></a></td>
 			<td th:text="*{likeCnt}"></td>
 		</tr>
 	</table>
