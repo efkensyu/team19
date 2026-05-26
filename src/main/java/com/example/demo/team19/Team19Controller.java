@@ -94,7 +94,7 @@ public class Team19Controller {
 		//曲一覧作成
 		List<Team19Music> musicList = musicService.findMusic(mood, janru);
 		//コメント一覧作成(ムード、ジャンル絞り)
-		List<Team19Comment> commentList = musicComment.findAll();
+		List<Team19Comment> commentList = musicComment.selectComment(mood, janru);
 		
 		comeList = new ArrayList<>();
 		
