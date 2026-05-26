@@ -28,5 +28,14 @@ public interface Team19CommentRepository extends JpaRepository<Team19Comment, In
 	                   @Param("musicCd") Integer musicCd,
 	                   @Param("text") String text);
 	
-	
+	@Query(value = """
+			select c.*
+			from team19_comment_tbl c
+			join team19_music_tbl m
+			  on c.music_cd = m.music_cd
+			where m.music_nm like %:musicNm%
+			""",nativeQuery = true)
+	List<Team19Comment> selectCommentByMusicNm(
+			@Param("musicNm")String musicNm);
+
 }

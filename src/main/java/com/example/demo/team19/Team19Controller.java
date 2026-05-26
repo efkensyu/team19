@@ -145,8 +145,6 @@ public class Team19Controller {
 	    
 	    Date date = new Date(System.currentTimeMillis());
 
-	    
-
 	    // ★ 曲IDで登録
 	    
 	    model.addAttribute("mood", mood);
@@ -166,6 +164,44 @@ public class Team19Controller {
 	    return "team19/Team19Result";
 	}
 
+	//曲名検索をすることによって、それに即したリストが表示される
+	@PostMapping(value="/team19_3", params="searchComment")
+	public String searchComment(
+			@RequestParam("musicNm")String musicNm,
+			@RequestParam("mood")String mood,
+			@RequestParam("janru")String janru,
+			Model model) {
+			
+			List<Team19Music>musicList =
+					musicService.findMusic(mood, janru);
+			
+			List<Team19Comment>commentList =
+					musicComment.selectCommentByMusicNm(musicNm);
+			
+			List<Team19CommentForm2> comeList =
+					new ArrayList<>();
+			
+			for(Team19Comment d : commentList) {
+				
+				comeList.add(
+						new Team19CommentForm2(
+								d.getCommentDate(),
+								musicService.disMusicNm(d.getMusicCd()),
+								d.getCommentText()
+								)
+						);
+			}
+				
+			model.addAttribute("mood", mood);
+			model.addAttribute("janru", janru);
+			model.addAttribute("musicList", musicList);
+			model.addAttribute("comeList", comeList);
+			
+			return "team19/Team19Result";
+			}
+			
+			
+	
 	
 	
 	//結果表示から、登録画面に行くボタン

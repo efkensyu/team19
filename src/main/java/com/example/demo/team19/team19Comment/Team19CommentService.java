@@ -24,5 +24,9 @@ public class Team19CommentService {
 			return repository.findAll();
 			
 		}
-
+		
+		public List<Team19Comment> selectCommentByMusicNm(String musicNm){
+			return repository.selectCommentByMusicNm(musicNm);
+		}
+		
 }
