@@ -8,12 +8,13 @@
 <body>
 	<form method="post" th:action="@{team19_2}">
 		<h2 class="mood-janru-text">気分を選択してください</h2>
-		<label class="mood-janru-moodselect-radio">
-		<input type="radio" name="mood" value="楽しい" checked="checked">JOY -楽しい-
-		<input type="radio" name="mood" value="落ち込んでいる">SAD -落ち込んでいる-
-		<input type="radio" name="mood" value="盛り上がる">EXCITING -盛り上がる-
-		<input type="radio" name="mood" value="リラックス">RELAX -リラックス-
-		</label>
+		<div class="mood-janru-moodselect-radio">
+		    <label><input type="radio" name="mood" value="楽しい" checked="checked">JOY -楽しい-</label>
+			<br>
+		    <label><input type="radio" name="mood" value="落ち込んでいる">SAD -落ち込んでいる-</label>
+		    <label><input type="radio" name="mood" value="盛り上がる">EXCITING -盛り上がる-</label>
+		    <label><input type="radio" name="mood" value="リラックス">RELAX -リラックス-</label>
+		</div>
 		<br>
 		<h2 class="mood-janru-text">ジャンルを選択してください</h2>
 		<label class="mood-janru-janruselect-radio">
