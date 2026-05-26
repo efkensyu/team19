@@ -123,12 +123,20 @@ public class Team19Controller {
 	        @RequestParam("janru") String janru,
 	        @ModelAttribute Team19Form team19Form,
 	        @ModelAttribute @Validated Team19CommentForm team19CommentForm,
-	        BindingResult result,
-	        Model model) {
+	        BindingResult result, Model model) {
+		List<Team19Music> musicList = musicService.findMusic(mood, janru);
 		
+		if (result.hasErrors()) {
+			model.addAttribute("mood", mood);
+		    model.addAttribute("janru", janru);
+		    model.addAttribute("comeList", comeList);
+		    model.addAttribute("musicList", musicList);
+			 return "team19/Team19Result";
+		}
+	    
 	    Date date = new Date(System.currentTimeMillis());
 
-	    List<Team19Music> musicList = musicService.findMusic(mood, janru);
+	    
 
 	    // ★ 曲IDで登録
 	    
@@ -136,14 +144,9 @@ public class Team19Controller {
 	    model.addAttribute("janru", janru);
 	    model.addAttribute("musicList", musicList);
 	    model.addAttribute("team19CommentForm",new Team19CommentForm());
-	    model.addAttribute("comeList", comeList);
 	    
-	    if (result.hasErrors()) {
-	    	 
-			return "team19/Team19Result";
-		}
 	    
-	    comeList.add(  new Team19CommentForm2( date, musicService.disMusicNm(team19CommentForm.getMusicCd()), team19CommentForm.getComment()) );
+	    comeList.add(new Team19CommentForm2( date, musicService.disMusicNm(team19CommentForm.getMusicCd()), team19CommentForm.getComment()) );
 	    musicComment.insertComment(
 	            date,team19CommentForm.getMusicCd(),team19CommentForm.getComment()
 	            );	    
