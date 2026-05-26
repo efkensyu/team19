@@ -56,33 +56,45 @@ p, .home-text, .register-text, .result-text2 {
 }
 
 /* ==========================================
-   3. 【最重要】ラジオボタンまわりの崩れを綺麗に直す
+   3. 【決定版】ラジオボタンと文字を同じ行に横並びにする
    ========================================== */
-/* ラジオボタンを囲むlabelの文字位置や余白を整える */
 .mood-janru-moodselect-radio, 
 .mood-janru-janruselect-radio {
-    display: flex;
-    flex-wrap: wrap;       /* 画面幅に合わせて折り返す */
-    gap: 16px 24px;        /* ラジオボタン同士の間隔 */
+    display: grid;                  /* Gridレイアウトに切り替え */
+    grid-template-columns: auto 1fr;/* 左に丸ぽち(自動幅)、右に文字(残り全部) */
+    align-items: center;            /* 丸ぽちと文字の縦の中心をビシッと揃える */
+    gap: 12px 10px;                 /* 行間 12px、丸ぽちと文字の間 10px */
     margin-bottom: 25px;
     color: #e5e7eb;
     font-size: 0.95rem;
+    padding-left: 10px;
 }
 
-/* HTML側の <br> を無視して、1つずつきれいに整列させる */
+/* HTML側の邪魔な改行タグ(<br>)を完全に消し去る */
 .mood-janru-moodselect-radio br,
 .mood-janru-janruselect-radio br {
-    display: none;
+    display: none !important;
 }
 
-/* ラジオボタン本体と文字の縦位置を中央でビシッと揃える */
+/* もし文字が <p> や <span> で囲まれていた場合の隙間リセット */
+.mood-janru-moodselect-radio p,
+.mood-janru-janruselect-radio p,
+.mood-janru-moodselect-radio label,
+.mood-janru-janruselect-radio label {
+    margin: 0;
+    padding: 0;
+    display: inline; /* 横に並ぶように強制 */
+}
+
+/* ラジオボタン本体（丸ぽち）の微調整 */
 input[type="radio"] {
     accent-color: #3b82f6;
-    margin-right: 6px;
-    vertical-align: middle;
+    margin: 0;                      /* 余計な余白をカット */
     transform: scale(1.1);
     cursor: pointer;
+    grid-column: 1;                 /* 必ず1列目（左側）に配置 */
 }
+
 
 /* ==========================================
    4. 【最重要】下の3つのボタンを美しく一列に並べる
@@ -189,4 +201,9 @@ a {
 
 .error-message {
 	color: red;
+}
+
+select option {
+    background-color: #111827;
+    color: #ffffff;
 }
