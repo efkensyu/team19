@@ -93,9 +93,16 @@ public class Team19Controller {
 			@RequestParam("janru") String janru, Model model) {
 		//曲一覧作成
 		List<Team19Music> musicList = musicService.findMusic(mood, janru);
-		//コメント一覧作成(ムード、ジャンル絞り)
-		List<Team19Comment> commentList = musicComment.selectComment(mood, janru);
 		
+		//コメント一覧作成(ムード、ジャンル絞り)
+		List<Team19Comment> commentList = musicComment.selectComment("楽しい","J-POP");
+		
+		if (!commentList.isEmpty()) {
+		    System.out.println(commentList.get(0).getCommentText());
+		} else {
+		    System.out.println("コメントが見つかりませんでした");
+		}
+
 		comeList = new ArrayList<>();
 		
 		for (Team19Comment d : commentList) {
