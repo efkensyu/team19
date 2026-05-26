@@ -96,6 +96,8 @@ public class Team19Controller {
 		//コメント一覧作成(ムード、ジャンル絞り)
 		List<Team19Comment> commentList = musicComment.findAll();
 		
+		comeList = new ArrayList<>();
+		
 		for (Team19Comment d : commentList) {
 	        comeList.add(  new Team19CommentForm2( d.getCommentDate(), musicService.disMusicNm(d.getMusicCd()), d.getCommentText()) );
 	    }
