@@ -14,8 +14,8 @@
 		<input type="submit" name="back" value="戻る">
 		<input type="submit" name="clear" value="削除">
 		</label>
-		<div th:if="${#fields.hasGlobalErrors()}">
-			<p th:each="err : ${#fields.globalErrors()}"
+		<div  th:if="${#fields.hasGlobalErrors()}">
+			<p class="error-message" th:each="err : ${#fields.globalErrors()}"
 			th:text="${err}"></p>
 		</div>
 		<p class="register-text">ジャンルを選択してください</p>
@@ -36,15 +36,15 @@
 		<br>
 		<p class="register-text">曲名を入力してください</p>
 		<input type="text" th:field ="*{MusicNm}" size="20">
-		<span th:if="${#fields.hasErrors('MusicNm')}" th:errors="*{MusicNm}"></span>
+		<span class="error-message" th:if="${#fields.hasErrors('MusicNm')}" th:errors="*{MusicNm}"></span>
 		<br>
 		<p class="register-text">アーティスト名を入力してください</p>
 		<input type="text" th:field ="*{Artist}" size="20">
-		<th:block th:if="${#fields.hasErrors('Artist')}" th:errors="*{Artist}"></th:block>
+		<span class="error-message" th:if="${#fields.hasErrors('Artist')}" th:errors="*{Artist}"></span>
 		<br>
 		<p class="register-text">曲のURLを入力してください※SpotifyのURLのみ有効です</p>
 		<input type="text" th:field = "*{Url}" size="100">
-		<th:block th:if="${#fields.hasErrors('Url')}" th:errors="*{Url}"></th:block>
+		<span class="error-message" th:if="${#fields.hasErrors('Url')}" th:errors="*{Url}"></span>
 		<p class="rist-text">あなたが曲を登録しようとしているリスト</p>
 		<table class="list-table"border ="1">
 			<tr>

@@ -32,7 +32,7 @@
 	
 	<th:block th:object="${team19CommentForm}">
 	    <span class="result-comment-text">コメントする曲を選択してください</span>
-
+	
 	    <select class="list-table" th:field="*{musicCd}">
 	        <option th:each="data : ${musicList}"
 	                th:value="${data.musicCd}"
@@ -41,7 +41,7 @@
 	    </select>
 
 	    <textarea th:field="*{comment}" rows="5" cols="30">この中に入力</textarea>
-	    <p th:if="${#fields.hasErrors('comment')}" th:errors="*{comment}"></p>
+	    <p class="error-message" th:if="${#fields.hasErrors('comment')}" th:errors="*{comment}"></p>
 	</th:block>
 
 	
