@@ -18,6 +18,7 @@ public class Team19Music {
 	private String musicNm;
 	private String artist;
 	private String janruCd;
+	//重複
 	private String musicUrl;
 	private String likeCnt;
 }
