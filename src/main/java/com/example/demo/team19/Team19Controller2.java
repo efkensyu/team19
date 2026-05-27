@@ -47,6 +47,7 @@ public class Team19Controller2 {
 		public String add(@ModelAttribute @Validated Team19RegisterForm team19RegisterForm,BindingResult result,Model model,SessionStatus sessionStatus) {
 			if(result.hasErrors()) {
 				//model.addAttribute("team19RegisterForm",new Team19RegisterForm());
+				model.addAttribute("result",registerlist);				
 				return "team19/Team19Register";
 			}
 			registerlist.add(team19RegisterForm);
