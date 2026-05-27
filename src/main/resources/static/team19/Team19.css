@@ -1,9 +1,9 @@
 /* ==========================================
-   1. 全体のベースデザインあ
+   1. 全体のベースデザイン（プロジェクター用に文字を拡大！）
    ========================================== */
 body {
-    background: linear-gradient(135deg, #0b111e 0%, #060913 100%);
-    color: #f3f4f6;
+    background: linear-gradient(135deg, #e0f2fe 0%, #ecfccb 100%);
+    color: #1f2937;
     font-family: 'Helvetica Neue', Arial, 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', sans-serif;
     line-height: 1.6;
     margin: 0;
@@ -12,249 +12,387 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
+    /* 全体の基本文字サイズを大きく設定 */
+    font-size: 1.2rem; 
 }
 
 form {
-    background: rgba(255, 255, 255, 0.03);
-    backdrop-filter: blur(10px);
-    border: 1px solid rgba(59, 130, 246, 0.2);
-    padding: 40px;
-    border-radius: 12px;
+    background: #ffffff;
+    border: 3px solid #bef264; /* 枠線を少し太くしてハッキリ */
+    padding: 50px 40px;       /* 上下の余白を広げてゆったりと */
+    border-radius: 16px;
     width: 100%;
-    max-width: 700px;
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+    max-width: 1000px;        /* 文字拡大に合わせて枠の最大幅を1000pxに拡張 */
+    box-shadow: 0 12px 30px rgba(120, 190, 30, 0.2);
     box-sizing: border-box;
     margin-bottom: 20px;
 }
 
 /* ==========================================
-   2. タイトルとテキスト
+   2. タイトルとテキスト（遠くからでも見えるサイズ）
    ========================================== */
 .tittle, .register-tittle {
-    font-size: 1.8rem;
-    font-weight: 700;
+    font-size: 2.8rem; /* 2rem から 2.8rem に大幅拡大 */
+    font-weight: 800;
     text-align: center;
-    background: linear-gradient(90deg, #3b82f6, #06b6d4);
+    background: linear-gradient(90deg, #1e40af, #0284c7);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    margin-bottom: 25px;
+    color: transparent;
+    margin-bottom: 40px;
     letter-spacing: 0.05em;
 }
 
-h2.mood-janru-text {
-    font-size: 1.2rem;
-    color: #38bdf8;
-    border-left: 4px solid #3b82f6;
-    padding-left: 10px;
-    margin-top: 30px;
-    margin-bottom: 20px;
+h2.mood-janru-text, h2.result-text, h3 {
+    font-size: 1.8rem; /* 大見出しをプロジェクター用に拡大 */
+    color: #0369a1;
+    border-left: 6px solid #2563eb;
+    padding-left: 14px;
+    margin-top: 40px;
+    margin-bottom: 25px;
+    font-weight: 800;
 }
 
-p, .home-text, .register-text, .result-text2 {
-    color: #9ca3af;
-    font-size: 0.95rem;
+/* 質問文や説明テキストを劇的に大きく太く */
+p, .home-text, .register-text, .result-text2, .result-comment-text {
+    color: #1f2937;    /* より濃い色にしてコントラストを強化 */
+    font-size: 1.4rem; /* 0.95rem から 1.4rem に大幅拡大 */
+    font-weight: 800;  /* 太さを最大級にしてボヤけないように */
+    margin-top: 20px;
+    margin-bottom: 12px;
+}
+
+.rist-text {
+    color: #1e3a8a;
+    font-size: 1.3rem; /* 拡大 */
+    font-weight: 800;
+    margin-top: 35px;
+    background-color: #eff6ff;
+    padding: 14px 20px;
+    border-radius: 8px;
+    border-left: 6px solid #3b82f6;
+}
+
+.url-notice {
+    font-size: 1.1rem; /* 注意書きも読めるサイズに */
+    color: #dc2626;
+    font-weight: 800;
+    margin-left: 8px;
+    display: inline-block;
 }
 
 /* ==========================================
-   3. 【決定版】ラジオボタンを完全な縦一列に並べる
+   3. ラジオボタン（縦一列並び）
    ========================================== */
 .mood-janru-moodselect-radio, 
 .mood-janru-janruselect-radio {
-    display: flex;                  /* GridからFlexboxに戻す */
-    flex-direction: column;         /* 上から下に縦一列に並べる */
-    align-items: flex-start;        /* 左端にカチッと揃える */
-    gap: 16px;                      /* 選択肢ごとの上下の間隔 */
-    margin-bottom: 25px;
-    color: #e5e7eb;
-    font-size: 0.95rem;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 18px;
+    margin-bottom: 30px;
+    color: #1f2937;
+    font-size: 1.3rem; /* ラジオボタンの文字を拡大 */
     padding-left: 10px;
 }
 
-/* HTML側の邪魔な改行タグ(<br>)を完全に消し去る */
 .mood-janru-moodselect-radio br,
 .mood-janru-janruselect-radio br {
     display: none !important;
 }
 
-/* ラジオボタンと文字を1つの塊にして、縦中央で高さを揃える */
 .mood-janru-moodselect-radio label,
 .mood-janru-janruselect-radio label {
-    display: inline-flex;           /* ボタンと文字を横一列にする */
-    align-items: center;            /* 丸ぽちと文字の縦の中心をビシッと揃える */
+    display: inline-flex;
+    align-items: center;
     cursor: pointer;
-    width: 100%;                    /* タップ領域を広げる */
+    width: 100%;
+    font-weight: 700;
 }
 
-/* ラジオボタン本体（丸ぽち）の微調整 */
+/* ラジオボタンの丸ぽち自体もプロジェクターで見えるように巨大化 */
 input[type="radio"] {
-    accent-color: #3b82f6;
-    margin: 0 12px 0 0;             /* 右側にだけ12pxの隙間を作って文字と離す */
-    transform: scale(1.1);
+    accent-color: #2563eb;
+    margin: 0 14px 0 0;
+    transform: scale(1.5); /* 1.1 から 1.5 に拡大して押しやすく */
     cursor: pointer;
-    flex-shrink: 0;                 /* 文字が長くなっても丸ぽちが潰れないように固定 */
+    flex-shrink: 0;
 }
-
 
 /* ==========================================
-   4. 下のボタンを美しく一列に並べる（メイン・登録画面共通）
+   4. ボタン関連のデザイン（文字拡大・横幅拡張）
    ========================================== */
-.mood-janru-botton, .register-botton {
-    display: flex;           /* 横並びにする */
-    justify-content: center; /* 中央に寄せる */
+.mood-janru-botton, .register-botton, .result-botton {
+    display: flex;
+    justify-content: center;
     align-items: center;
-    gap: 12px;               /* ボタン同士のすき間 */
-    margin-top: 25px;
-    margin-bottom: 30px;     /* ボタンの下側にしっかり余白を作る */
+    gap: 20px;
+    margin-top: 35px;
+    margin-bottom: 35px;
     width: 100%;
 }
 
-/* ボタン内の不要な改行を消す */
-.mood-janru-botton br, .register-botton br {
-    display: none !important;
+.register-botton-final {
+    display: flex;
+    justify-content: center;
+    margin-top: 40px;
+    margin-bottom: 20px;
 }
 
-/* ボタンの共通デザイン */
-input[type="submit"] {
-    background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
-    color: white;
+/* ボタン共通スタイル */
+input[type="submit"], 
+.mood-janru-botton a, 
+.register-botton a,
+.result-botton a,
+.home-button {
+    display: inline-block;
     border: none;
-    padding: 12px 20px;
-    font-size: 0.95rem;
-    font-weight: 600;
-    border-radius: 6px;
+    padding: 16px 28px;     /* ボタンをひとまわり大きく */
+    font-size: 1.2rem;       /* 文字を 1rem から 1.2rem に拡大 */
+    font-weight: 800;       /* 極太 */
+    border-radius: 45px;
     cursor: pointer;
     transition: all 0.2s ease;
-    box-shadow: 0 4px 12px rgba(59, 130, 246, 0.2);
-    
-    /* 横幅を完全に統一 */
-    width: 150px;
     text-align: center;
     box-sizing: border-box;
-    margin: 0; /* 余計なマージンをリセット */
+    margin: 0;
+    text-decoration: none;
+    letter-spacing: 0.05em;
+    width: 220px;           /* 文字拡大に合わせて横幅を180pxから220pxに拡張 */
 }
 
-input[type="submit"]:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(59, 130, 246, 0.4);
+/* 1. 【メインボタン】追加・送信・コメント検索 */
+.btn-add,
+input[type="submit"][value="追加"],
+input[type="submit"][value="送信"], 
+input[type="submit"][value="コメント検索"] {
+    background: #1d4ed8 !important;
+    color: #ffffff !important;
+    box-shadow: 0 6px 16px rgba(29, 78, 216, 0.4);
+    width: 240px !important;
+}
+
+/* 2. 【確定ボタン】登録・確定 */
+.btn-register,
+input[type="submit"][value="登録"],
+input[type="submit"][value="確定"] {
+    background: #047857 !important;
+    color: #ffffff !important;
+    width: 360px !important; /* 横幅を大幅に拡張 */
+    font-size: 1.3rem !important;
+    padding: 18px 36px;
+    box-shadow: 0 6px 18px rgba(4, 120, 87, 0.4);
+}
+
+/* 3. 【サブボタン】削除・クリア・戻る */
+.btn-clear, 
+input[type="submit"][value="削除"],
+input[type="submit"][value="クリア"],
+input[type="submit"][value="戻る"], 
+input[type="submit"][value="選択をリセット"], 
+input[type="submit"][value="clear"] {
+    background: #ffffff !important;
+    color: #1f2937 !important; 
+    border: 3px solid #9ca3af !important; /* 枠線を太くしてハッキリ */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+    width: 200px !important;
+}
+
+input[type="submit"]:hover, 
+.mood-janru-botton a:hover, 
+.register-botton a:hover,
+.result-botton a:hover,
+.home-button:hover {
+    transform: translateY(-3px);
     filter: brightness(1.1);
 }
 
-/* 「戻る」「選択をリセット」「削除」ボタンは目立たないグレーにする */
-input[type="submit"][value="戻る"],
-input[type="submit"][value="選択をリセット"],
-input[type="submit"][value="削除"],
-input[type="submit"][value="clear"] {
-    background: rgba(255, 255, 255, 0.08);
-    color: #d1d5db;
-    box-shadow: none;
-}
-
+input[type="submit"][value="削除"]:hover,
+input[type="submit"][value="クリア"]:hover,
 input[type="submit"][value="戻る"]:hover,
 input[type="submit"][value="選択をリセット"]:hover,
-input[type="submit"][value="削除"]:hover,
-input[type="submit"][value="clear"]:hover {
-    background: rgba(255, 255, 255, 0.15);
-    color: #fff;
+input[type="submit"][value="clear"]:hover { 
+    background: #f3f4f6 !important; 
+    border-color: #4b5563 !important;
 }
 
 /* ==========================================
-   5. テーブル・入力フォーム（登録画面用）
+   5. 入力フォーム（入力中の文字も大きく）
    ========================================== */
 input[type="text"], select, textarea {
     width: 100%;
-    padding: 12px;
-    background: rgba(255, 255, 255, 0.06);
-    border: 1px solid rgba(255, 255, 255, 0.15);
-    border-radius: 6px;
-    color: #ffffff;
-    font-size: 1rem;
+    max-width: 100%;
+    padding: 16px 20px;       /* フォーム内を広くして文字を打ちやすく */
+    background: #f8fafc;
+    border: 3px solid #cbd5e1; /* 枠線を3pxに太くしてスクリーンでも見やすく */
+    border-radius: 10px;
+    color: #111827;
+    font-size: 1.25rem;       /* 入力する文字サイズを 1rem から 1.25rem に拡大 */
+    font-weight: 700;         /* 入力文字を太字に */
     transition: all 0.2s ease;
     box-sizing: border-box;
-    margin-bottom: 15px;
+    margin-bottom: 25px;
 }
 
-/* セレクトボックスの選択肢（ドロップダウン）の文字を見えやすく */
+input[type="text"]:focus, select:focus, textarea:focus {
+    outline: none;
+    border-color: #3b82f6;
+    background: #ffffff;
+    box-shadow: 0 0 0 5px rgba(59, 130, 246, 0.2);
+}
+
 select option {
-    background-color: #111827;
-    color: #ffffff;
+    background-color: #ffffff;
+    color: #111827;
 }
 
-/* 【新設】テーブル全体を横スクロールさせるためのコンテナ */
+.list-table-select, .register-moodselect, .register-janruselect {
+    width: 100%;
+    padding: 16px 20px;
+    background: #f8fafc;
+    border: 3px solid #cbd5e1;
+    border-radius: 10px;
+    color: #111827;
+    font-size: 1.25rem;
+    font-weight: 700;
+    margin-bottom: 25px;
+    box-sizing: border-box;
+}
+
+/* ==========================================
+   6. 手順ガイド（注意書き）用スタイル
+   ========================================== */
+.step-guide {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    background-color: #f0fdf4;
+    border: 2px solid #bbf7d0;
+    padding: 16px 20px;
+    border-radius: 10px;
+    margin-bottom: 25px;
+}
+.step-badge {
+    background-color: #2563eb;
+    color: white;
+    font-size: 1rem; /* 拡大 */
+    font-weight: 800;
+    padding: 6px 12px;
+    border-radius: 6px;
+    flex-shrink: 0;
+}
+.badge-step2 {
+    background-color: #059669;
+}
+.step-text {
+    margin: 0;
+    color: #1f2937;
+    font-size: 1.2rem; /* 拡大 */
+    font-weight: 700;
+}
+.section-divider {
+    border: 0;
+    height: 2px;
+    background: #e2e8f0;
+    margin: 40px 0;
+}
+
+/* ==========================================
+   7. テーブル・リスト（データの大文字化）
+   ========================================== */
 .table-container {
     width: 100%;
-    overflow-x: auto;         /* 横方向にはみ出したらここにスクロールバーを出す */
-    margin: 30px 0 20px 0;   
-    border-radius: 8px;
-    border: 1px solid rgba(255, 255, 255, 0.15); /* 枠線をコンテナ側に引っ越し */
-    background: rgba(0, 0, 0, 0.3);
+    overflow-x: auto;
+    margin: 20px 0 30px 0;   
+    border-radius: 10px;
+    border: 2px solid #cbd5e1; 
+    background: #ffffff;
 }
 
-/* 【新設】全体の共通スクロールバーのデザイン（細くスタイリッシュに） */
 .table-container::-webkit-scrollbar {
-    height: 8px;              /* スクロールバーの太さ */
+    height: 10px;
 }
 .table-container::-webkit-scrollbar-thumb {
-    background: rgba(59, 130, 246, 0.5); /* バーの色（半透明の青） */
-    border-radius: 4px;
-}
-.table-container::-webkit-scrollbar-track {
-    background: rgba(255, 255, 255, 0.05); 
+    background: #94a3b8;
+    border-radius: 5px;
 }
 
-/* 【修正】リストテーブルのスタイル */
 .list-table {
     width: 100%;
-    min-width: 800px;        /* 【重要】テーブルの最低横幅を確保して、必ず横スクロールが発生するようにする */
+    min-width: 950px; /* 文字拡大に合わせてテーブルの最低幅を広げ、型崩れを防止 */
     border-collapse: collapse;
-    font-size: 0.9rem;
-    table-layout: fixed;     /* 列の幅を固定 */
+    font-size: 1.15rem; /* テーブル内の文字を 0.9rem から 1.15rem に拡大 */
+    table-layout: fixed;
 }
 
-/* 表の中の横線・縦線のデザイン */
 .list-table th, .list-table td {
-    padding: 12px 15px;
+    padding: 16px 14px;
     text-align: left;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.15);
-    border-right: 1px solid rgba(255, 255, 255, 0.05); 
+    border-bottom: 2px solid #e2e8f0;
+    border-right: 1px solid #e2e8f0; 
     vertical-align: middle;  
+    color: #1f2937;
 }
 
-/* 各列の幅を固定（スクロールしたときに型崩れしないように％で配分） */
-.list-table th:nth-child(1), .list-table td:nth-child(1) { width: 6%; }  /* 番号 */
-.list-table th:nth-child(2), .list-table td:nth-child(2) { width: 12%; } /* ジャンル */
-.list-table th:nth-child(3), .list-table td:nth-child(3) { width: 12%; } /* 気分 */
-
-/* 【曲名・アーティスト名・URL】の3つの欄をすべて改行なしの横文字にする */
-.list-table th:nth-child(4), .list-table td:nth-child(4), /* 曲名 */
-.list-table th:nth-child(5), .list-table td:nth-child(5), /* アーティスト名 */
-.list-table th:nth-child(6), .list-table td:nth-child(6)  /* URL */ { 
-    width: 23%; 
-    white-space: nowrap;     /* 絶対に自動改行させず、きれいな横文字にする */
-    overflow: hidden;        /* はみ出た文字は隠す（スクロールで読めるようになります） */
-    text-overflow: ellipsis; /* 通常時は長すぎたら末尾を「...」にする */
+.list-table th {
+    background-color: #f1f5f9;
+    color: #1e293b;
+    font-weight: 800; /* ヘッダーを極太に */
+    border-bottom: 3px solid #94a3b8; 
 }
 
-/* 一番右端の列だけは右の縦線を消してスッキリさせる */
+.list-table th:nth-child(1), .list-table td:nth-child(1) { width: 8%; text-align: center; }
+.list-table th:nth-child(2), .list-table td:nth-child(2) { width: 16%; }
+.list-table th:nth-child(3), .list-table td:nth-child(3) { width: 14%; }
+
+.list-table th:nth-child(4), .list-table td:nth-child(4), 
+.list-table th:nth-child(5), .list-table td:nth-child(5), 
+.list-table th:nth-child(6), .list-table td:nth-child(6) { 
+    width: 20%; 
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.list-table tr:hover td {
+    background-color: #f8fafc;
+}
+
 .list-table th:last-child, .list-table td:last-child {
     border-right: none;
 }
 
-.list-table th {
-    background-color: rgba(59, 130, 246, 0.15);
-    color: #38bdf8;
-    font-weight: 600;
-    border-bottom: 2px solid rgba(59, 130, 246, 0.4); 
+/* ==========================================
+   8. その他一般リンク（画面最下部のリンクなど）
+   ========================================== */
+form + a, 
+.top-back-link a,
+body > a {
+    color: #1d4ed8;
+    font-size: 1.3rem; /* リンクテキストも大きく */
+    font-weight: 800;
+    text-decoration: none;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    display: inline-block;
+}
+form + a:hover, 
+.top-back-link a:hover,
+body > a:hover {
+    text-decoration: underline;
 }
 
 a {
-    color: #38bdf8;
+    color: #1d4ed8;
     text-decoration: none;
+    font-weight: 700;
 }
 
 .error-message {
-    color: #ef4444;
+    color: #dc2626;
     display: block;
-    margin-top: -10px;
-    margin-bottom: 15px;
-    font-size: 0.85rem;
+    margin-top: -15px;
+    margin-bottom: 20px;
+    font-size: 1.1rem; /* エラー文もハッキリ読めるように拡大 */
+    font-weight: 800;
 }
