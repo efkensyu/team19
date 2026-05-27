@@ -50,6 +50,36 @@ public class Team19Controller2 {
 				model.addAttribute("result",registerlist);				
 				return "team19/Team19Register";
 			}
+			
+			boolean exists = musicService.existsByUrl(
+					team19RegisterForm.getUrl());
+			
+			if(exists) {
+				result.reject(
+						"duplicateUrl",
+						"このURLは既に登録されています"
+					);
+				
+				model.addAttribute("result",registerlist);
+				
+				return "team19/Team19Register";
+			}
+			
+			for(Team19RegisterForm d : registerlist) {
+				
+				if(d.getUrl().equals(team19RegisterForm.getUrl())) {
+					
+					result.reject(
+							"duplicateListUrl",
+							"このURLは既にリストへ追加されています");
+				
+				
+				model.addAttribute("result", registerlist);
+				
+				return "team19/Team19Register";
+				}
+			}
+			
 			registerlist.add(team19RegisterForm);
 			model.addAttribute("team19RegisterForm",new Team19RegisterForm());
 			model.addAttribute("result",registerlist);
