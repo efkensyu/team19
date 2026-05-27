@@ -9,6 +9,8 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.example.demo.team19.team19Music.Team19Music;
+
 public interface Team19CommentRepository extends JpaRepository<Team19Comment, Integer> {
 	
 	@Query(value = "select * from team19_comment_tbl where music_cd in (select music_cd from team19_music_tbl msc join team19_janru_tbl j on msc.janru_cd = j.janru_cd join team19_kibun_tbl m on msc.mood_cd = m.mood_cd where j.janru_nm = :janru and m.mood_nm = :mood)", nativeQuery =true)
@@ -38,4 +40,9 @@ public interface Team19CommentRepository extends JpaRepository<Team19Comment, In
 	List<Team19Comment> selectCommentByMusicNm(
 			@Param("musicNm")String musicNm);
 
+	@Query(value ="""
+			select * from team19_music_rbl
+			where music_nm = :musicNm
+			""", nativeQuery = true)
+	Team19Music findByMusicNm(@Param("musicNm")String musicNm);
 }

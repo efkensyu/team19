@@ -29,4 +29,7 @@ public class Team19MusicService {
 		public boolean existsByUrl(String url) {
 			return repository.existsByMusicUrl(url);
 		}
+		public Team19Music findByMusicNm(String musicNm) {
+			return repository.findByMusicNm(musicNm);
+		}
 }

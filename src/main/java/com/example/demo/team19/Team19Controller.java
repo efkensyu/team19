@@ -137,6 +137,7 @@ public class Team19Controller {
 	public String submit(
 	        @RequestParam("mood") String mood,
 	        @RequestParam("janru") String janru,
+	        @RequestParam("commentMusicNm")String musicNm,
 	        @ModelAttribute Team19Form team19Form,
 	        @ModelAttribute @Validated Team19CommentForm team19CommentForm,
 	        BindingResult result, Model model) {
@@ -151,6 +152,12 @@ public class Team19Controller {
 		}
 	    
 	    Date date = new Date(System.currentTimeMillis());
+	    Team19Music music = musicService.findByMusicNm(musicNm);
+	    
+	    if(music == null) {
+	    	model.addAttribute("errorMsg", "曲が見つかりません");
+	    	return "team19/Team19Result";	    
+	    }
 
 	    // ★ 曲IDで登録
 	    
@@ -160,9 +167,9 @@ public class Team19Controller {
 	    model.addAttribute("team19CommentForm",new Team19CommentForm());
 	    
 	    
-	    comeList.add(new Team19CommentForm2( date, musicService.disMusicNm(team19CommentForm.getMusicCd()), team19CommentForm.getComment()) );
+	    comeList.add(new Team19CommentForm2( date, music.getMusicNm(), team19CommentForm.getComment()) );
 	    musicComment.insertComment(
-	            date,team19CommentForm.getMusicCd(),team19CommentForm.getComment()
+	            date,music.getMusicCd(),team19CommentForm.getComment()
 	            );	    
 	    
 	    model.addAttribute("comeList", comeList);
@@ -174,7 +181,7 @@ public class Team19Controller {
 	//曲名検索をすることによって、それに即したリストが表示される
 	@PostMapping(value="/team19_3", params="searchComment")
 	public String searchComment(
-			@RequestParam("musicNm")String musicNm,
+			@RequestParam("searchMusicNm")String musicNm,
 			@RequestParam("mood")String mood,
 			@RequestParam("janru")String janru,
 			Model model) {

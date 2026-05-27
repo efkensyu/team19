@@ -28,6 +28,7 @@ public interface Team19MusicRepository extends JpaRepository<Team19Music,Integer
 	        @Param("url") String url,
 	        @Param("mood") String mood
 	);
+	Team19Music findByMusicNm(String musicNm);
 
 }
 
