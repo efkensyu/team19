@@ -49,9 +49,10 @@ public class Team19Controller {
 	
 	//URL変換
 	public static String toEmbedUrl(String url) {
-	    return url.replace("/intl-ja/", "/embed/");
+	    String base = url.split("\\?si=")[0];
+	    base = base.replace("/intl-ja/", "/embed/");
+	    return base;
 	}
-
 	
 	//最初にアクセスした時
 	@GetMapping("team19")
@@ -211,6 +212,10 @@ public class Team19Controller {
 			
 			List<Team19Music>musicList =
 					musicService.findMusic(mood, janru);
+			//Urlの変換！
+			for(Team19Music d : musicList) {
+				d.setMusicUrl(toEmbedUrl(d.getMusicUrl()));
+			}	
 			
 			List<Team19Comment>commentList =
 					musicComment.selectCommentByMusicNm(musicNm);
@@ -228,7 +233,11 @@ public class Team19Controller {
 								)
 						);
 			}
-				
+			//Urlの変換！
+			for(Team19Music d : musicList) {
+				d.setMusicUrl(toEmbedUrl(d.getMusicUrl()));
+			}	
+			
 			model.addAttribute("mood", mood);
 			model.addAttribute("janru", janru);
 			model.addAttribute("musicList", musicList);
