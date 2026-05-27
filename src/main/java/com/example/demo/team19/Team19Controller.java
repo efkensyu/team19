@@ -91,6 +91,7 @@ public class Team19Controller {
 	@PostMapping(value="/team19_2", params="forward")
 	public String sendforward2(@RequestParam("mood") String mood,
 			@RequestParam("janru") String janru, Model model) {
+		String commentNone;
 		//曲一覧作成
 		List<Team19Music> musicList = musicService.findMusic(mood, janru);
 		
@@ -99,8 +100,14 @@ public class Team19Controller {
 		
 		if (!commentList.isEmpty()) {
 		    System.out.println(commentList.get(0).getCommentText());
+		    commentNone = null;
+		    model.addAttribute("commentNone", commentNone);
 		} else {
 		    System.out.println("コメントが見つかりませんでした");
+		    commentNone = "コメントが見つかりませんでした";
+		    Date date = new Date(System.currentTimeMillis());
+		    model.addAttribute("date", date);
+		    model.addAttribute("commentNone", commentNone);
 		}
 
 		comeList = new ArrayList<>();

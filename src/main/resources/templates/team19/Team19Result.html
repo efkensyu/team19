@@ -58,6 +58,12 @@
 				<th>曲名</th>
 				<th>コメント</th>
 			</tr>
+			<th:block th:unless="${commentNone == null }">
+			<tr>
+				<td th:text="${date}"></td>
+				<td colspan="2" th:text="${commentNone}"></td>
+			</tr>
+			</th:block>
 			<tr th:each="data,i : ${comeList}" th:object="${data}">
 				<td th:text="*{commentDate}"></td>
 				<td th:text="*{musicNm}"></td>
