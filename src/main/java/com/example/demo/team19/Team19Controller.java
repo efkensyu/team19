@@ -152,10 +152,15 @@ public class Team19Controller {
 		}
 	    
 	    Date date = new Date(System.currentTimeMillis());
+	    System.out.println(musicNm);
 	    Team19Music music = musicService.findByMusicNm(musicNm);
 	    
 	    if(music == null) {
 	    	model.addAttribute("errorMsg", "曲が見つかりません");
+	    	model.addAttribute("mood", mood);
+		    model.addAttribute("janru", janru);
+		    model.addAttribute("comeList", comeList);
+		    model.addAttribute("musicList", musicList);
 	    	return "team19/Team19Result";	    
 	    }
 

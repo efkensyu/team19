@@ -36,6 +36,11 @@
 	    <input type="text"
 			name="commentMusicNm"
 			placeholder="コメントする曲名を入力">
+			
+			<p class="error-message"
+			   th:if="${errorMsg != null}"
+			   th:text="${errorMsg}">
+			</p>
 
 	    <textarea th:field="*{comment}" rows="5" cols="30">この中に入力</textarea>
 	    <p class="error-message" th:if="${#fields.hasErrors('comment')}" th:errors="*{comment}"></p>
