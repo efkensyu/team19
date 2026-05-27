@@ -25,6 +25,9 @@
 			<td th:text="*{musicNm}"></td>
 			<td th:text="*{artist}"></td>
 			<td><a th:href="*{musicUrl}" target="_brank" th:text="クリックして再生ページへ！"></a></td>
+			<td><iframe th:src="*{musicUrl}" 
+				width="100%"	height="152">
+				 </iframe></td>
 <!--			<td th:text="*{likeCnt}"></td>-->
 		</tr>
 	</table>

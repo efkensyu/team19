@@ -47,6 +47,12 @@ public class Team19Controller {
 		    return new Team19RegisterForm();
 		}	
 	
+	//URL変換
+	public static String toEmbedUrl(String url) {
+	    return url.replace("/intl-ja/", "/embed/");
+	}
+
+	
 	//最初にアクセスした時
 	@GetMapping("team19")
 	public String  index() {
@@ -95,6 +101,14 @@ public class Team19Controller {
 		//曲一覧作成
 		List<Team19Music> musicList = musicService.findMusic(mood, janru);
 		
+		//Urlの変換！
+		for(Team19Music d : musicList) {
+			d.setMusicUrl(toEmbedUrl(d.getMusicUrl()));
+		}
+		//musicList.get(0).setMusicUrl(toEmbedUrl(musicList.get(0).getMusicUrl()));
+		
+		
+		
 		//コメント一覧作成(ムード、ジャンル絞り)
 		List<Team19Comment> commentList = musicComment.selectComment(janru, mood);
 		
@@ -142,7 +156,11 @@ public class Team19Controller {
 	        @ModelAttribute @Validated Team19CommentForm team19CommentForm,
 	        BindingResult result, Model model) {
 		List<Team19Music> musicList = musicService.findMusic(mood, janru);
-		
+		//Urlの変換！
+		for(Team19Music d : musicList) {
+					d.setMusicUrl(toEmbedUrl(d.getMusicUrl()));
+				}
+				
 		if (result.hasErrors()) {
 			model.addAttribute("mood", mood);
 		    model.addAttribute("janru", janru);
