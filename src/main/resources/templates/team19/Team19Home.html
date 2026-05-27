@@ -9,7 +9,7 @@
 <h1 class="tittle">あなたの今の気分から、至高の曲をお届けします。</h1>
 <p class="home-text">名前を入力し、気分・ジャンル選択画面に移行してください</p>
 <form method="post" th:action="@{team19_1}" th:object="${team19Form}">
-	<input type="text" th:field="*{name}" size="20">
+	<input type="text" th:field="*{name}" size="20" placeholder="例: 棒瑠度">
 	<span class="error-message" th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></span>
 	<label class="home-botton">
 	<input type="submit" value="確定">
