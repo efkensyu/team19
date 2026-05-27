@@ -14,24 +14,28 @@
 	<p class="result-text2" th:text="ジャンル： + ${janru} "></p>
 	<input type="hidden" name="janru" th:value="${janru}">
 
-	<table class="list-table"border="1">
-		<tr>
-			<th>曲名</th>
-			<th>アーティスト名</th>
-			<th>再生ボタン</th>
-			<th>再生URL</th>
-			
-		</tr>
-		<tr th:each="data : ${musicList}" th:object="${data}">
-			<td th:text="*{musicNm}"></td>
-			<td th:text="*{artist}"></td>
-			<td><iframe th:src="*{musicUrl}" 
-				width="300"	height="152">
-				 </iframe></td>
-			<td><a th:href="*{musicUrl}" target="_brank" th:text="クリックして再生ページへ！"></a></td>
-<!--			<td th:text="*{likeCnt}"></td>-->
-		</tr>
-	</table>
+	<!-- ▼▼ ここから追加：テーブルをスクロールさせるための外枠 ▼▼ -->
+		<div class="table-container">
+			<table class="list-table" border="1">
+				<tr>
+					<th>曲名</th>
+					<th>アーティスト名</th>
+					<th>再生ボタン</th>
+					<th>再生URL</th>
+				</tr>
+				<tr th:each="data : ${musicList}" th:object="${data}">
+					<td th:text="*{musicNm}"></td>
+					<td th:text="*{artist}"></td>
+					<td>
+						<iframe th:src="*{musicUrl}" width="300" height="152"></iframe>
+					</td>
+					<td>
+						<a th:href="*{musicUrl}" target="_blank" th:text="クリックして再生ページへ！"></a>
+					</td>
+				</tr>
+			</table>
+		</div>
+		<!-- ▲▲ ここまで追加：外枠の閉じタグ ▲▲ -->
 	
 	
 	<th:block th:object="${team19CommentForm}">

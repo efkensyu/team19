@@ -18,15 +18,21 @@ body {
 
 form {
     background: #ffffff;
-    border: 3px solid #bef264; /* 枠線を少し太くしてハッキリ */
-    padding: 50px 40px;       /* 上下の余白を広げてゆったりと */
+    border: 3px solid #bef264; 
+    padding: 50px 40px;       
     border-radius: 16px;
     width: 100%;
-    max-width: 1000px;        /* 文字拡大に合わせて枠の最大幅を1000pxに拡張 */
+    
+    /* ▼ 変更：テーブルが余裕で収まるように、最大幅を 1000px から 1100px に拡張します ▼ */
+    max-width: 1100px;        
+    
     box-shadow: 0 12px 30px rgba(120, 190, 30, 0.2);
     box-sizing: border-box;
     margin-bottom: 20px;
 }
+
+
+
 
 /* ==========================================
    2. タイトルとテキスト（遠くからでも見えるサイズ）
@@ -302,15 +308,21 @@ select option {
    ========================================== */
 .table-container {
     width: 100%;
-    overflow-x: auto;
+    max-height: 480px;      /* 縦スクロールは維持 */
+    overflow-y: auto;       /* 縦に溢れたらスクロールバーを表示 */
+    
+    /* ▼ 変更：横スクロールバーを「非表示」にします ▼ */
+    overflow-x: hidden;     
+    
     margin: 20px 0 30px 0;   
     border-radius: 10px;
     border: 2px solid #cbd5e1; 
     background: #ffffff;
 }
 
+/* 縦スクロールバーのデザイン（横スクロールの設定は削除） */
 .table-container::-webkit-scrollbar {
-    height: 10px;
+    width: 10px;            /* 縦スクロールバーの太さ */
 }
 .table-container::-webkit-scrollbar-thumb {
     background: #94a3b8;
@@ -319,10 +331,12 @@ select option {
 
 .list-table {
     width: 100%;
-    min-width: 950px; /* 文字拡大とプレイヤー用にテーブルの最低幅を確保 */
+    /* ▼ 変更：横幅を固定せず、親要素（1100pxになったフォーム）に100%フィットさせます ▼ */
+    min-width: auto; 
+    
     border-collapse: collapse;
     font-size: 1.15rem; 
-    table-layout: fixed; /* 列の幅を強制固定する */
+    table-layout: fixed; 
 }
 
 .list-table th, .list-table td {
