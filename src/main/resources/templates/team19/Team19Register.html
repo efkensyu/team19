@@ -49,7 +49,10 @@
 				<br>
 				<p class="register-text">曲のURLを入力してください <span class="url-notice">※SpotifyのURLのみ有効です</span></p>
 				<input type="text" th:field="*{Url}" placeholder="https://open.spotify.com/...">
-				<span class="error-message" th:if="${#fields.hasErrors('Url')}" th:errors="*{Url}"></span>		
+				<span class="error-message" th:if="${#fields.hasErrors('Url')}" th:errors="*{Url}"></span>	
+				<div class="top-back-link">
+							<a href="https://open.spotify.com/search" target="_blank">Spotifyの検索ページはこちら！</a>
+						</div>	
 		<!-- STEP1用のボタン（横並びに配置） -->
 		<div class="register-botton">
 			<input type="submit" name="add" value="リストに追加する" class="btn-add">

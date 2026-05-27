@@ -42,6 +42,13 @@ public class Team19Controller2 {
 			    return new Team19RegisterForm();
 			}	
 		
+		//URL変換
+		public static String toEmbedUrl(String url) {
+		    String base = url.split("\\?si=")[0];
+		    base = base.replace("/intl-ja/", "/embed/");
+		    return base;
+		}
+		
 	//曲追加ボタン
 		@PostMapping(value="/team19_4", params="add")
 		public String add(@ModelAttribute @Validated Team19RegisterForm team19RegisterForm,BindingResult result,Model model,SessionStatus sessionStatus) {
@@ -51,13 +58,18 @@ public class Team19Controller2 {
 				return "team19/Team19Register";
 			}
 			
-			boolean exists = musicService.existsByUrl(
-					team19RegisterForm.getUrl());
+			List<String> urls = musicService.urlList();
+			boolean exists = false;
+			for (String url : urls) {
+				if(toEmbedUrl(team19RegisterForm.getUrl()).equals(toEmbedUrl(url))) {
+				exists = true;
+				}
+			}
 			
 			if(exists) {
 				result.reject(
 						"duplicateUrl",
-						"このURLは既に登録されています"
+						"この曲は既に登録されています"
 					);
 				
 				model.addAttribute("result",registerlist);
@@ -71,7 +83,7 @@ public class Team19Controller2 {
 					
 					result.reject(
 							"duplicateListUrl",
-							"このURLは既にリストへ追加されています");
+							"この曲は既にリストへ追加されています");
 				
 				
 				model.addAttribute("result", registerlist);
@@ -102,9 +114,16 @@ public class Team19Controller2 {
 				return "team19/Team19Register";
 			}
 			
+			List<String> urls = musicService.urlList();
+			boolean exists = false;
+			
 			for (Team19RegisterForm d : registerlist) {
 				
-				boolean exists = musicService.existsByUrl(d.getUrl());
+				for (String url : urls) {
+					if(toEmbedUrl(d.getUrl()).equals(toEmbedUrl(url))) {
+					exists = true;
+					}
+				}
 				
 				if(exists) {
 					result.reject(

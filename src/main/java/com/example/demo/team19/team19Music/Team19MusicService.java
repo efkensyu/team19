@@ -26,9 +26,10 @@ public class Team19MusicService {
 		public void insertMusic(String name, String artist, String janru, String url, String mood){
 			repository.insertMusic(name, artist, janru, url, mood);
 		}
-		public boolean existsByUrl(String url) {
-			return repository.existsByMusicUrl(url);
+		public List<String> urlList() {
+			return repository.urlList();
 		}
+		
 		public Team19Music findByMusicNm(String musicNm) {
 			return repository.findByMusicNm(musicNm);
 		}
