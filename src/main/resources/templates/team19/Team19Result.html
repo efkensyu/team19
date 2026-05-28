@@ -19,7 +19,7 @@
 				<tr>
 					<th>曲名</th>
 					<th>アーティスト名</th>
-					<th>再生ボタン</th>
+					<th>試聴ボタン</th>
 					<th>再生URL</th>
 				</tr>
 				<tr th:each="data : ${musicList}" th:object="${data}">
@@ -51,8 +51,6 @@
 	    <textarea th:field="*{comment}" rows="5" cols="30">この中に入力</textarea>
 	    <p class="error-message" th:if="${#fields.hasErrors('comment')}" th:errors="*{comment}"></p>
 	</th:block>
-
-	
 	
 	<input type="submit" value="送信" name="submit">
 	<h3>曲名でコメント検索</h3>

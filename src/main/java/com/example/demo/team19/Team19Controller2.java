@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
 
-import com.example.demo.team19.team19Comment.Team19CommentService;
 import com.example.demo.team19.team19Music.Team19MusicService;
 
 import lombok.RequiredArgsConstructor;
@@ -24,7 +23,6 @@ public class Team19Controller2 {
 	List<Team19RegisterForm> registerlist = new ArrayList<>();
 	List<Team19CommentForm2> comeList = new ArrayList<>();
 	private final Team19MusicService musicService;
-	private final Team19CommentService musicComment;
 	//名前セッション定義
 		@ModelAttribute("team19Form")
 		public Team19Form setup() {
@@ -65,6 +63,9 @@ public class Team19Controller2 {
 				exists = true;
 				}
 			}
+			
+			//toEmbedUrl(team19RegisterForm.getUrl());
+			
 			
 			if(exists) {
 				result.reject(
@@ -118,7 +119,6 @@ public class Team19Controller2 {
 			boolean exists = false;
 			
 			for (Team19RegisterForm d : registerlist) {
-				
 				for (String url : urls) {
 					if(toEmbedUrl(d.getUrl()).equals(toEmbedUrl(url))) {
 					exists = true;
