@@ -1,5 +1,9 @@
 package com.example.demo.team19;
 
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -46,6 +50,43 @@ public class Team19Controller2 {
 		    base = base.replace("/intl-ja/", "/embed/");
 		    return base;
 		}
+		//URL到達可能チェック！
+		public static boolean isReachable(String urlString) {
+		    try {
+		        URL url = new URL(urlString);
+		        HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+		        conn.setRequestMethod("GET");
+		        conn.setConnectTimeout(3000);
+		        conn.setReadTimeout(3000);
+		        //そもそも到達出来るURLなのか判断！
+		        int status = conn.getResponseCode();
+		        if (status < 200 || status >= 400) {
+		            return false;
+		        }
+
+		        // HTML を少し読む
+		        try (BufferedReader reader = new BufferedReader(
+		                new InputStreamReader(conn.getInputStream()))) {
+		        	//以下の文面がWebページに表示されていないかチェック！
+		            String line;
+		            while ((line = reader.readLine()) != null) {
+		                if (line.contains("お探しの曲が見つかりませんでした")
+		                    || line.contains("Page not found")
+		                    || line.contains("not found")) {
+		                    return false;
+		                }
+		            }
+		        }
+
+		        return true;
+
+		    } catch (Exception e) {
+		        return false;
+		    }
+		}
+
+
+		
 		
 	//曲追加ボタン
 		@PostMapping(value="/team19_4", params="add")
@@ -53,6 +94,15 @@ public class Team19Controller2 {
 			if(result.hasErrors()) {
 				//model.addAttribute("team19RegisterForm",new Team19RegisterForm());
 				model.addAttribute("result",registerlist);				
+				return "team19/Team19Register";
+			}
+			//撃ち込まれたURLが再生可能か判断！
+			boolean reach = isReachable(toEmbedUrl(team19RegisterForm.getUrl()));
+			if(!reach) {
+				result.reject(
+						"duplicateUrl",
+						"不正なURLです");
+				model.addAttribute("result",registerlist);
 				return "team19/Team19Register";
 			}
 			
@@ -63,9 +113,6 @@ public class Team19Controller2 {
 				exists = true;
 				}
 			}
-			
-			//toEmbedUrl(team19RegisterForm.getUrl());
-			
 			
 			if(exists) {
 				result.reject(

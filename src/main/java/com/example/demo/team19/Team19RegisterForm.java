@@ -16,8 +16,8 @@ public class Team19RegisterForm {
 	@NotBlank(message = "未入力です。" )
 	private String Artist;
 	@NotBlank(message = "未入力です。" )
-	@Pattern(regexp = "https://open\\.spotify\\.com/.*$",
-			message = "SpotifyのURLを入力してください。"
-		)
+	@Pattern(regexp = "https://open\\.spotify\\.com/intl-ja/track/.*$",
+	message = "Spotifyの曲URLのみ有効です。"
+	)
 	private String Url;
 }
