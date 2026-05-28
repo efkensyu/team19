@@ -102,11 +102,24 @@ public class Team19Controller {
 		//曲一覧作成
 		List<Team19Music> musicList = musicService.findMusic(mood, janru);
 		
+		//urlの生データが入ったリストを作成！
+		List<String> urlss = new ArrayList<>();
+		for(Team19Music c : musicList) {
+			urlss.add(c.getMusicUrl());
+		}
 		//Urlの変換！
 		for(Team19Music d : musicList) {
 			d.setMusicUrl(toEmbedUrl(d.getMusicUrl()));
 		}
-		//musicList.get(0).setMusicUrl(toEmbedUrl(musicList.get(0).getMusicUrl()));
+		//出力する曲一覧のデータ作成
+		ArrayList<vision> musicJamp = new ArrayList<>();
+		for(int i = 0 ; i < urlss.size(); i++) {
+			musicJamp.add( new vision( musicList.get(i).getMusicNm(),
+					musicList.get(i).getArtist(),
+					musicList.get(i).getMusicUrl(),
+					urlss.get(i)));
+		}
+		
 		
 		
 		
@@ -134,7 +147,7 @@ public class Team19Controller {
 		model.addAttribute("mood", mood);
 		model.addAttribute("janru",janru);
 		//楽曲一覧表示
-		model.addAttribute("musicList", musicList);
+		model.addAttribute("musicJamp", musicJamp);
 		//コメント一覧表示
 		model.addAttribute("comeList", comeList);
 		
@@ -157,16 +170,29 @@ public class Team19Controller {
 	        @ModelAttribute @Validated Team19CommentForm team19CommentForm,
 	        BindingResult result, Model model) {
 		List<Team19Music> musicList = musicService.findMusic(mood, janru);
-		//Urlの変換！
-		for(Team19Music d : musicList) {
+		//urlの生データが入ったリストを作成！
+				List<String> urlss = new ArrayList<>();
+				for(Team19Music c : musicList) {
+					urlss.add(c.getMusicUrl());
+				}
+				//Urlの変換！
+				for(Team19Music d : musicList) {
 					d.setMusicUrl(toEmbedUrl(d.getMusicUrl()));
+				}
+				//出力する曲一覧のデータ作成
+				ArrayList<vision> musicJamp = new ArrayList<>();
+				for(int i = 0 ; i < urlss.size(); i++) {
+					musicJamp.add( new vision( musicList.get(i).getMusicNm(),
+							musicList.get(i).getArtist(),
+							musicList.get(i).getMusicUrl(),
+							urlss.get(i)));
 				}
 				
 		if (result.hasErrors()) {
 			model.addAttribute("mood", mood);
 		    model.addAttribute("janru", janru);
 		    model.addAttribute("comeList", comeList);
-		    model.addAttribute("musicList", musicList);
+		    model.addAttribute("musicJamp", musicJamp);
 			 return "team19/Team19Result";
 		}
 	    
@@ -179,7 +205,7 @@ public class Team19Controller {
 	    	model.addAttribute("mood", mood);
 		    model.addAttribute("janru", janru);
 		    model.addAttribute("comeList", comeList);
-		    model.addAttribute("musicList", musicList);
+		    model.addAttribute("musicJamp", musicJamp);
 	    	return "team19/Team19Result";	    
 	    }
 
@@ -212,9 +238,22 @@ public class Team19Controller {
 			
 			List<Team19Music>musicList =
 					musicService.findMusic(mood, janru);
+			//urlの生データが入ったリストを作成！
+			List<String> urlss = new ArrayList<>();
+			for(Team19Music c : musicList) {
+				urlss.add(c.getMusicUrl());
+			}
 			//Urlの変換！
 			for(Team19Music d : musicList) {
 				d.setMusicUrl(toEmbedUrl(d.getMusicUrl()));
+			}
+			//出力する曲一覧のデータ作成
+			ArrayList<vision> musicJamp = new ArrayList<>();
+			for(int i = 0 ; i < urlss.size(); i++) {
+				musicJamp.add( new vision( musicList.get(i).getMusicNm(),
+						musicList.get(i).getArtist(),
+						musicList.get(i).getMusicUrl(),
+						urlss.get(i)));
 			}	
 			
 			List<Team19Comment>commentList =
@@ -233,14 +272,10 @@ public class Team19Controller {
 								)
 						);
 			}
-			//Urlの変換！
-			for(Team19Music d : musicList) {
-				d.setMusicUrl(toEmbedUrl(d.getMusicUrl()));
-			}	
 			
 			model.addAttribute("mood", mood);
 			model.addAttribute("janru", janru);
-			model.addAttribute("musicList", musicList);
+			model.addAttribute("musicJamp", musicJamp);
 			model.addAttribute("comeList", comeList);
 			
 			return "team19/Team19Result";

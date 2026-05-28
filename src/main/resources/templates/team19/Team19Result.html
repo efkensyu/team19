@@ -22,14 +22,14 @@
 					<th>試聴ボタン</th>
 					<th>再生URL</th>
 				</tr>
-				<tr th:each="data : ${musicList}" th:object="${data}">
+				<tr th:each="data : ${musicJamp}" th:object="${data}">
 					<td th:text="*{musicNm}"></td>
 					<td th:text="*{artist}"></td>
 					<td>
 						<iframe th:src="*{musicUrl}" width="300" height="152"></iframe>
 					</td>
 					<td>
-						<a th:href="*{musicUrl}" target="_blank" th:text="クリックして再生ページへ！"></a>
+						<a th:href="*{jampUrl}" target="_blank" th:text="クリックして再生ページへ！"></a>
 					</td>
 				</tr>
 			</table>
